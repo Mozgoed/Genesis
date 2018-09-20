@@ -1,0 +1,9 @@
+C:\Users\mozgoed123\Desktop\Genesis\bin\Debug\Genesis.exe
+C:\Users\mozgoed123\Desktop\Genesis\bin\Debug\Genesis.pdb
+C:\Users\mozgoed123\Desktop\Genesis\obj\Debug\Genesis.csprojAssemblyReference.cache
+C:\Users\mozgoed123\Desktop\Genesis\obj\Debug\Genesis.Form1.resources
+C:\Users\mozgoed123\Desktop\Genesis\obj\Debug\Genesis.Properties.Resources.resources
+C:\Users\mozgoed123\Desktop\Genesis\obj\Debug\Genesis.csproj.GenerateResource.cache
+C:\Users\mozgoed123\Desktop\Genesis\obj\Debug\Genesis.csproj.CoreCompileInputs.cache
+C:\Users\mozgoed123\Desktop\Genesis\obj\Debug\Genesis.exe
+C:\Users\mozgoed123\Desktop\Genesis\obj\Debug\Genesis.pdb
