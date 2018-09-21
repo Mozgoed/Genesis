@@ -21,6 +21,9 @@ namespace Genesis
             
         }
 
+        /// <summary>
+        /// Метод подсчитывает количество особей в популяции с геном красоты и выводит на экран
+        /// </summary>
         void countBirds()
         {
             double count = 0;
@@ -41,13 +44,15 @@ namespace Genesis
         private void btnStart_Click(object sender, EventArgs e)
         {
             countBirds();
-
-
+            MessageBox.Show("Создан массив особей без гена красоты");
             for (int bird = 0; bird < population.Length/2; bird++)
             {
                 population[bird] = true;
             }
             countBirds();
+            MessageBox.Show("Заполнена половина популяции особей с геном красоты");
+
+            MessageBox.Show("Эмуляция завершена");
         }
     }
 }

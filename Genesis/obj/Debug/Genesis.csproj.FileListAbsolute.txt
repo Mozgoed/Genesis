@@ -7,3 +7,12 @@ C:\Users\mozgoed123\Desktop\Genesis\obj\Debug\Genesis.csproj.GenerateResource.ca
 C:\Users\mozgoed123\Desktop\Genesis\obj\Debug\Genesis.csproj.CoreCompileInputs.cache
 C:\Users\mozgoed123\Desktop\Genesis\obj\Debug\Genesis.exe
 C:\Users\mozgoed123\Desktop\Genesis\obj\Debug\Genesis.pdb
+C:\Users\Мозгоед\Documents\GitHub\Genesis\Genesis\bin\Debug\Genesis.exe
+C:\Users\Мозгоед\Documents\GitHub\Genesis\Genesis\bin\Debug\Genesis.pdb
+C:\Users\Мозгоед\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.csprojResolveAssemblyReference.cache
+C:\Users\Мозгоед\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.Form1.resources
+C:\Users\Мозгоед\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.Properties.Resources.resources
+C:\Users\Мозгоед\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.csproj.GenerateResource.cache
+C:\Users\Мозгоед\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.csproj.CoreCompileInputs.cache
+C:\Users\Мозгоед\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.exe
+C:\Users\Мозгоед\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.pdb
