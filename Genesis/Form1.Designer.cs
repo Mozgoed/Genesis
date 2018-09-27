@@ -107,6 +107,7 @@
             0,
             0,
             0});
+            this.numPopulationSize.Scroll += new System.Windows.Forms.ScrollEventHandler(this.numPopulationSize_Scroll);
             // 
             // Form1
             // 

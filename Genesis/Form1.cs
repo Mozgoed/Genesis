@@ -103,5 +103,11 @@ namespace Genesis
 
             MessageBox.Show("Эмуляция завершена");
         }
+
+        private void numPopulationSize_Scroll(object sender, ScrollEventArgs e)
+        {
+                int N = e.NewValue - e.OldValue;
+                numPopulationSize.Value = numPopulationSize.Value + N*2;
+        }
     }
 }
