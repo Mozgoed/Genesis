@@ -14,8 +14,6 @@ namespace Genesis
         {
             InitializeComponent();
         }
-
-
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
 
@@ -40,10 +38,12 @@ namespace Genesis
             Application.DoEvents();
         }
 
-        bool[] population = new bool[100];
+        bool[] population;
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            int populationSize = (int)numPopulationSize.Value;
+            population = new bool[populationSize];
             countBirds();
             MessageBox.Show("Создан массив особей без гена красоты");
             for (int bird = 0; bird < population.Length / 2; bird++)

@@ -32,14 +32,16 @@
             this.genBeauty = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.lblBeautyPercent = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numPopulationSize = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numPopulationSize)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(11, 251);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStart.Location = new System.Drawing.Point(16, 386);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(421, 29);
+            this.btnStart.Size = new System.Drawing.Size(632, 45);
             this.btnStart.TabIndex = 0;
             this.btnStart.Text = "Пуск эмуляции";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -47,45 +49,80 @@
             // 
             // genBeauty
             // 
-            this.genBeauty.Location = new System.Drawing.Point(101, 8);
-            this.genBeauty.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.genBeauty.Location = new System.Drawing.Point(152, 12);
             this.genBeauty.Name = "genBeauty";
-            this.genBeauty.Size = new System.Drawing.Size(330, 26);
+            this.genBeauty.Size = new System.Drawing.Size(495, 40);
             this.genBeauty.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 14);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(12, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 13);
+            this.label1.Size = new System.Drawing.Size(103, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Ген красоты";
             // 
             // lblBeautyPercent
             // 
             this.lblBeautyPercent.AutoSize = true;
-            this.lblBeautyPercent.Location = new System.Drawing.Point(258, 36);
-            this.lblBeautyPercent.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblBeautyPercent.Location = new System.Drawing.Point(387, 55);
             this.lblBeautyPercent.Name = "lblBeautyPercent";
-            this.lblBeautyPercent.Size = new System.Drawing.Size(21, 13);
+            this.lblBeautyPercent.Size = new System.Drawing.Size(32, 20);
             this.lblBeautyPercent.TabIndex = 3;
             this.lblBeautyPercent.Text = "0%";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 93);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(149, 20);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Размер популяции";
+            // 
+            // numPopulationSize
+            // 
+            this.numPopulationSize.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numPopulationSize.Location = new System.Drawing.Point(178, 91);
+            this.numPopulationSize.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numPopulationSize.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numPopulationSize.Name = "numPopulationSize";
+            this.numPopulationSize.Size = new System.Drawing.Size(139, 26);
+            this.numPopulationSize.TabIndex = 5;
+            this.numPopulationSize.Value = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(439, 287);
+            this.ClientSize = new System.Drawing.Size(658, 442);
+            this.Controls.Add(this.numPopulationSize);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.lblBeautyPercent);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.genBeauty);
             this.Controls.Add(this.btnStart);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Genesis";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.numPopulationSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -97,6 +134,8 @@
         private System.Windows.Forms.ProgressBar genBeauty;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblBeautyPercent;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown numPopulationSize;
     }
 }
 
