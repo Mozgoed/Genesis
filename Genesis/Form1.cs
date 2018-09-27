@@ -39,13 +39,15 @@ namespace Genesis
         }
 
         bool[] population;
-
+        //Чтобы увидеть все задачи TODO нажми: меню "Вид" > "Список задач"
+        //TODO: использовать в программе populationSize
         private void btnStart_Click(object sender, EventArgs e)
         {
             int populationSize = (int)numPopulationSize.Value;
             population = new bool[populationSize];
             countBirds();
             MessageBox.Show("Создан массив особей без гена красоты");
+            //TODO: создать интерфейс для начального процента особей с признаком красоты
             for (int bird = 0; bird < population.Length / 2; bird++)
             {
                 population[bird] = true;
@@ -54,6 +56,7 @@ namespace Genesis
             MessageBox.Show("Заполнена половина популяции особей с геном красоты");
 
             //Размножение
+            //TODO: создать интерфейс для количества потомков (2)
             byte[] byteGeneration = new byte[population.Length * 2];
             int child = 0;
             for (int bird = 0; bird < population.Length; bird++)
@@ -74,8 +77,10 @@ namespace Genesis
                 for (child = 0; child < byteGeneration.Length; child++)
                 {
                     int percent = rnd.Next(0, 100);
+                    //TODO: оптимизировать все операторы if, если они вложены друг в друга
                     if (byteGeneration[child] == 0)
                     {
+                        //TODO: создать интерфейс для базовой выживаемости особи
                         if (percent > 70)
                         {
                             byteGeneration[child] = 255;
@@ -84,6 +89,7 @@ namespace Genesis
                     }
                     if (byteGeneration[child] == 1)
                     {
+                        //TODO: создать интерфейс бонусной выживаемости красивой особи
                         if (percent > 70 + 10)
                         {
                             byteGeneration[child] = 255;
@@ -100,14 +106,15 @@ namespace Genesis
                 if (byteGeneration[child] == 1) population[count++] = true;
             }
             countBirds();
-
+            //TODO: удалить ненужные MessageBox'ы и добавить по необходимости нужные
             MessageBox.Show("Эмуляция завершена");
         }
 
         private void numPopulationSize_Scroll(object sender, ScrollEventArgs e)
         {
-                int N = e.NewValue - e.OldValue;
-                numPopulationSize.Value = numPopulationSize.Value + N*2;
+            int N = e.NewValue - e.OldValue;
+            //TODO: подобрать оптимальный коэффициент для вращения колёсика мыши
+            numPopulationSize.Value = numPopulationSize.Value + N*2;
         }
     }
 }
