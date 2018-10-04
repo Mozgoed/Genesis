@@ -48,65 +48,68 @@ namespace Genesis
             countBirds();
             MessageBox.Show("Создан массив особей без гена красоты");
             //TODO: создать интерфейс для начального процента особей с признаком красоты++
-            int BeautyPresent =(int)num.Value/100;
+            decimal BeautyPresent = numBeautyPresent.Value / 100;
             for (int bird = 0; bird < population.Length * BeautyPresent; bird++)
             {
                 population[bird] = true;
             }
             countBirds();
-            MessageBox.Show("Заполнена часть популяции особей с геном красоты");
 
-            //Размножение
-            //TODO: создать интерфейс для количества потомков (2)++
-            byte[] byteGeneration = new byte[population.Length * 2];
-            int child = 0;
-            for (int bird = 0; bird < population.Length; bird++)
+            MessageBox.Show("Заполнена часть популяции особей с геном красоты \nНачало эмуляции...");
+
+            int step = 0;
+            while (genBeauty.Value < 100)
             {
-                for (int i = 0; i < 2; i++)
+                //Размножение
+                //TODO: создать интерфейс для количества потомков (2)++
+                byte[] byteGeneration = new byte[population.Length * 2];
+                int child = 0;
+                for (int bird = 0; bird < population.Length; bird++)
                 {
-                    if (population[bird] == true)
-                        byteGeneration[child++] = 1;
-                    else
-                        byteGeneration[child++] = 0;
+                    for (int i = 0; i < 2; i++)
+                    {
+                        if (population[bird] == true)
+                            byteGeneration[child++] = 1;
+                        else
+                            byteGeneration[child++] = 0;
+                    }
                 }
-            }
 
-            //Вымирание
-            Random rnd = new Random();
-            int count = population.Length;
-            while (count > 0)
+                //Вымирание
+                Random rnd = new Random();
+                int count = population.Length;
+                while (count > 0)
+                    for (child = 0; child < byteGeneration.Length; child++)
+                    {
+                        int percent = rnd.Next(0, 100);
+                        //TODO: оптимизировать все операторы if, если они вложены друг в друга ++
+                        if (byteGeneration[child] == 0 && percent > 70)
+                        {
+                            //TODO: создать интерфейс для базовой выживаемости особи++
+                            byteGeneration[child] = 255;
+                            count--;
+                        }
+                        if (byteGeneration[child] == 1 && percent > 70 + 10)
+                        {
+                            //TODO: создать интерфейс бонусной выживаемости красивой особи++
+                            byteGeneration[child] = 255;
+                            count--;
+                        }
+                        if (count == 0) break;
+                    }
+
+                count = 0;
                 for (child = 0; child < byteGeneration.Length; child++)
                 {
-                    int percent = rnd.Next(0, 100);
-                    //TODO: оптимизировать все операторы if, если они вложены друг в друга ++
-                    if (byteGeneration[child] == 0 && percent > 70)
-                    {
-                        //TODO: создать интерфейс для базовой выживаемости особи++
-                        
-                        
-                            byteGeneration[child] = 255;
-                            count--;
-                        
-                    }
-                    if (byteGeneration[child] == 1 && percent > 70 + 10)
-                    {
-                        //TODO: создать интерфейс бонусной выживаемости красивой особи++
-                        
-                        
-                            byteGeneration[child] = 255;
-                            count--;
-                        
-                    }
-                    if (count == 0) break;
+                    if (byteGeneration[child] == 0) population[count++] = false;
+                    if (byteGeneration[child] == 1) population[count++] = true;
                 }
-
-            count = 0;
-            for (child = 0; child < byteGeneration.Length; child++)
-            {
-                if (byteGeneration[child] == 0) population[count++] = false;
-                if (byteGeneration[child] == 1) population[count++] = true;
+                
+                lblStep.Text = "Этап: " + step++;
+                countBirds();
+                System.Threading.Thread.Sleep(500);
             }
-            countBirds();
+
             //TODO: удалить ненужные MessageBox'ы и добавить по необходимости нужные++
             MessageBox.Show("Эмуляция завершена");
         }
@@ -129,7 +132,5 @@ namespace Genesis
             int L = e.NewValue - e.OldValue;
             numPopulationBonusSurvival.Value = numPopulationBonusSurvival.Value + L * 50;
         }
-
-       
     }
 }

@@ -42,6 +42,7 @@
             this.numBeautyPresent = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.lblStep = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numPopulationSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPopulationSurvival)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPopulationBonusSurvival)).BeginInit();
@@ -52,7 +53,7 @@
             // btnStart
             // 
             this.btnStart.Location = new System.Drawing.Point(11, 251);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(2);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(421, 29);
             this.btnStart.TabIndex = 0;
@@ -63,7 +64,7 @@
             // genBeauty
             // 
             this.genBeauty.Location = new System.Drawing.Point(101, 8);
-            this.genBeauty.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.genBeauty.Margin = new System.Windows.Forms.Padding(2);
             this.genBeauty.Name = "genBeauty";
             this.genBeauty.Size = new System.Drawing.Size(330, 26);
             this.genBeauty.TabIndex = 1;
@@ -106,7 +107,7 @@
             0,
             0});
             this.numPopulationSize.Location = new System.Drawing.Point(151, 60);
-            this.numPopulationSize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numPopulationSize.Margin = new System.Windows.Forms.Padding(2);
             this.numPopulationSize.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -139,20 +140,28 @@
             this.numPopulationSurvival.Size = new System.Drawing.Size(120, 20);
             this.numPopulationSurvival.TabIndex = 6;
             this.numPopulationSurvival.Value = new decimal(new int[] {
-            2,
+            60,
             0,
             0,
             0});
-            this.numPopulationSurvival.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             this.numPopulationSurvival.Scroll += new System.Windows.Forms.ScrollEventHandler(this.numPopulationSurvival_Scroll);
             // 
             // numPopulationBonusSurvival
             // 
             this.numPopulationBonusSurvival.Location = new System.Drawing.Point(151, 116);
+            this.numPopulationBonusSurvival.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.numPopulationBonusSurvival.Name = "numPopulationBonusSurvival";
             this.numPopulationBonusSurvival.Size = new System.Drawing.Size(120, 20);
             this.numPopulationBonusSurvival.TabIndex = 7;
-            this.numPopulationBonusSurvival.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            this.numPopulationBonusSurvival.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.numPopulationBonusSurvival.Scroll += new System.Windows.Forms.ScrollEventHandler(this.numPopulationBonusSurvival_Scroll);
             // 
             // label3
@@ -163,7 +172,6 @@
             this.label3.Size = new System.Drawing.Size(133, 13);
             this.label3.TabIndex = 8;
             this.label3.Text = "Базовая выживаемость ";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -177,16 +185,41 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(151, 142);
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown1.TabIndex = 10;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
             // 
             // numBeautyPresent
             // 
             this.numBeautyPresent.Location = new System.Drawing.Point(151, 168);
+            this.numBeautyPresent.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numBeautyPresent.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numBeautyPresent.Name = "numBeautyPresent";
             this.numBeautyPresent.Size = new System.Drawing.Size(120, 20);
             this.numBeautyPresent.TabIndex = 11;
+            this.numBeautyPresent.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             // 
             // label5
             // 
@@ -205,13 +238,22 @@
             this.label6.Size = new System.Drawing.Size(123, 13);
             this.label6.TabIndex = 13;
             this.label6.Text = "Кол-во особей с геном";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // lblStep
+            // 
+            this.lblStep.AutoSize = true;
+            this.lblStep.Location = new System.Drawing.Point(331, 36);
+            this.lblStep.Name = "lblStep";
+            this.lblStep.Size = new System.Drawing.Size(43, 13);
+            this.lblStep.TabIndex = 14;
+            this.lblStep.Text = "Этап: 0";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(439, 287);
+            this.Controls.Add(this.lblStep);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.numBeautyPresent);
@@ -226,7 +268,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.genBeauty);
             this.Controls.Add(this.btnStart);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Genesis";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -256,6 +298,7 @@
         private System.Windows.Forms.NumericUpDown numBeautyPresent;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblStep;
     }
 }
 
