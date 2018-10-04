@@ -38,18 +38,29 @@ namespace Genesis
             Application.DoEvents();
         }
 
+        bool stop = false;
         bool[] population;
         //Чтобы увидеть все задачи TODO нажми: меню "Вид" > "Список задач"
         //TODO: использовать в программе populationSize
         private void btnStart_Click(object sender, EventArgs e)
         {
+            if(btnStart.Text == "Остановить")
+            {
+                btnStart.Text = "Остановка эмуляции...";
+                Application.DoEvents();
+                stop = true;
+                return;
+            }
+
+            btnStart.Text = "Остановить";
+            //TODO: блокировать остальные кнопки и внизу разблокировать
+            numPopulationSize.Enabled = false;
+
             int populationSize = (int)numPopulationSize.Value;
             population = new bool[populationSize];
             countBirds();
-            MessageBox.Show("Создан массив особей без гена красоты");
-            //TODO: создать интерфейс для начального процента особей с признаком красоты++
-            decimal BeautyPresent = numBeautyPresent.Value / 100;
-            for (int bird = 0; bird < population.Length * BeautyPresent; bird++)
+            decimal BeautyPercent = numBeautyPercent.Value / 100;
+            for (int bird = 0; bird < population.Length * BeautyPercent; bird++)
             {
                 population[bird] = true;
             }
@@ -57,16 +68,24 @@ namespace Genesis
 
             MessageBox.Show("Заполнена часть популяции особей с геном красоты \nНачало эмуляции...");
 
-            int step = 0;
-            while (genBeauty.Value < 100)
+            uint step = 0;
+            while (genBeauty.Value < 100 && genBeauty.Value > 0)
             {
+                //Проверка, что кто-то останавливает эмуляцию
+                if (stop)
+                {
+                    btnStart.Text = "Пуск эмуляции";
+                    stop = false;
+                    return;
+                }
+
                 //Размножение
-                //TODO: создать интерфейс для количества потомков (2)++
+                //TODO: создать интерфейс для количества потомков (2)--
                 byte[] byteGeneration = new byte[population.Length * 2];
                 int child = 0;
                 for (int bird = 0; bird < population.Length; bird++)
                 {
-                    for (int i = 0; i < 2; i++)
+                    for (int i = 0; i < 2; i++)//И тут тоже
                     {
                         if (population[bird] == true)
                             byteGeneration[child++] = 1;
@@ -82,42 +101,41 @@ namespace Genesis
                     for (child = 0; child < byteGeneration.Length; child++)
                     {
                         int percent = rnd.Next(0, 100);
-                        //TODO: оптимизировать все операторы if, если они вложены друг в друга ++
-                        if (byteGeneration[child] == 0 && percent > 70)
+                        if (byteGeneration[child] == 0 && percent > 70)//TODO: создать интерфейс для базовой выживаемости особи (70)
                         {
-                            //TODO: создать интерфейс для базовой выживаемости особи++
                             byteGeneration[child] = 255;
                             count--;
                         }
-                        if (byteGeneration[child] == 1 && percent > 70 + 10)
+                        if (byteGeneration[child] == 1 && percent > 70 + 10) //TODO: создать интерфейс бонусной выживаемости красивой особи (10)
                         {
-                            //TODO: создать интерфейс бонусной выживаемости красивой особи++
                             byteGeneration[child] = 255;
                             count--;
                         }
                         if (count == 0) break;
                     }
 
+                //Перенос выживших особей из большого массива в стандартный
                 count = 0;
                 for (child = 0; child < byteGeneration.Length; child++)
                 {
                     if (byteGeneration[child] == 0) population[count++] = false;
                     if (byteGeneration[child] == 1) population[count++] = true;
                 }
-                
-                lblStep.Text = "Этап: " + step++;
+                lblStep.Text = "Этап: " + ++step;
                 countBirds();
-                System.Threading.Thread.Sleep(500);
-            }
 
-            //TODO: удалить ненужные MessageBox'ы и добавить по необходимости нужные++
+                if(numDelay.Value != 0)
+                    System.Threading.Thread.Sleep( (int)numDelay.Value );
+            }
             MessageBox.Show("Эмуляция завершена");
+
+            btnStart.Text = "Пуск эмуляции";
+            numPopulationSize.Enabled = true;
         }
 
         private void numPopulationSize_Scroll(object sender, ScrollEventArgs e)
         {
             int N = e.NewValue - e.OldValue;
-            //TODO: подобрать оптимальный коэффициент для вращения колёсика мыши ++
             numPopulationSize.Value = numPopulationSize.Value + N*50;
         }
 
