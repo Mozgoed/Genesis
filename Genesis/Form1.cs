@@ -121,7 +121,7 @@ namespace Genesis
                     if (byteGeneration[child] == 0) population[count++] = false;
                     if (byteGeneration[child] == 1) population[count++] = true;
                 }
-                lblStep.Text = "Этап: " + ++step;
+                lblStep.Text = "Поколение: " + ++step;
                 countBirds();
 
                 if(numDelay.Value != 0)
@@ -149,6 +149,11 @@ namespace Genesis
         {
             int L = e.NewValue - e.OldValue;
             numPopulationBonusSurvival.Value = numPopulationBonusSurvival.Value + L * 50;
+        }
+
+        private void radGenPercent_CheckedChanged(object sender, EventArgs e)
+        {
+            //TODO: при клике по левому RadioButton - выключается правый цифровой блок. И наоборот.
         }
     }
 }

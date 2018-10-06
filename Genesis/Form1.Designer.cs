@@ -41,16 +41,19 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numBeautyPercent = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.lblStep = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.numDelay = new System.Windows.Forms.NumericUpDown();
+            this.radGenPercent = new System.Windows.Forms.RadioButton();
+            this.radGenCount = new System.Windows.Forms.RadioButton();
+            this.numBeautryCount = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numPopulationSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPopulationSurvival)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPopulationBonusSurvival)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBeautyPercent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDelay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numBeautryCount)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
@@ -203,7 +206,8 @@
             // 
             // numBeautyPercent
             // 
-            this.numBeautyPercent.Location = new System.Drawing.Point(226, 258);
+            this.numBeautyPercent.DecimalPlaces = 3;
+            this.numBeautyPercent.Location = new System.Drawing.Point(193, 258);
             this.numBeautyPercent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numBeautyPercent.Maximum = new decimal(new int[] {
             99,
@@ -216,10 +220,10 @@
             0,
             0});
             this.numBeautyPercent.Name = "numBeautyPercent";
-            this.numBeautyPercent.Size = new System.Drawing.Size(180, 26);
+            this.numBeautyPercent.Size = new System.Drawing.Size(96, 26);
             this.numBeautyPercent.TabIndex = 11;
             this.numBeautyPercent.Value = new decimal(new int[] {
-            20,
+            1,
             0,
             0,
             0});
@@ -234,25 +238,15 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Кол-во потомков ";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 262);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(179, 20);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Кол-во особей с геном";
-            // 
             // lblStep
             // 
             this.lblStep.AutoSize = true;
-            this.lblStep.Location = new System.Drawing.Point(496, 55);
+            this.lblStep.Location = new System.Drawing.Point(475, 55);
             this.lblStep.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStep.Name = "lblStep";
-            this.lblStep.Size = new System.Drawing.Size(65, 20);
+            this.lblStep.Size = new System.Drawing.Size(110, 20);
             this.lblStep.TabIndex = 14;
-            this.lblStep.Text = "Этап: 0";
+            this.lblStep.Text = "Поколение: 0";
             // 
             // label7
             // 
@@ -282,15 +276,64 @@
             0,
             0});
             // 
+            // radGenPercent
+            // 
+            this.radGenPercent.AutoSize = true;
+            this.radGenPercent.Checked = true;
+            this.radGenPercent.Location = new System.Drawing.Point(16, 258);
+            this.radGenPercent.Name = "radGenPercent";
+            this.radGenPercent.Size = new System.Drawing.Size(170, 24);
+            this.radGenPercent.TabIndex = 17;
+            this.radGenPercent.TabStop = true;
+            this.radGenPercent.Text = "% особей с геном ";
+            this.radGenPercent.UseVisualStyleBackColor = true;
+            this.radGenPercent.CheckedChanged += new System.EventHandler(this.radGenPercent_CheckedChanged);
+            // 
+            // radGenCount
+            // 
+            this.radGenCount.AutoSize = true;
+            this.radGenCount.Location = new System.Drawing.Point(296, 258);
+            this.radGenCount.Name = "radGenCount";
+            this.radGenCount.Size = new System.Drawing.Size(208, 24);
+            this.radGenCount.TabIndex = 18;
+            this.radGenCount.Text = "Кол-во особей с геном ";
+            this.radGenCount.UseVisualStyleBackColor = true;
+            // 
+            // numBeautryCount
+            // 
+            this.numBeautryCount.Enabled = false;
+            this.numBeautryCount.Location = new System.Drawing.Point(511, 258);
+            this.numBeautryCount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.numBeautryCount.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numBeautryCount.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numBeautryCount.Name = "numBeautryCount";
+            this.numBeautryCount.Size = new System.Drawing.Size(136, 26);
+            this.numBeautryCount.TabIndex = 19;
+            this.numBeautryCount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(658, 442);
+            this.Controls.Add(this.numBeautryCount);
+            this.Controls.Add(this.radGenCount);
+            this.Controls.Add(this.radGenPercent);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.numDelay);
             this.Controls.Add(this.lblStep);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.numBeautyPercent);
             this.Controls.Add(this.numericUpDown1);
@@ -304,7 +347,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.genBeauty);
             this.Controls.Add(this.btnStart);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Genesis";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.numPopulationSize)).EndInit();
@@ -313,6 +359,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBeautyPercent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDelay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numBeautryCount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -333,10 +380,12 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.NumericUpDown numBeautyPercent;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblStep;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown numDelay;
+        private System.Windows.Forms.RadioButton radGenPercent;
+        private System.Windows.Forms.RadioButton radGenCount;
+        private System.Windows.Forms.NumericUpDown numBeautryCount;
     }
 }
 
