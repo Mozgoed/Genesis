@@ -60,7 +60,6 @@ namespace Genesis
             numChildrenNumber.Enabled = false;
             numBeautyPercent.Enabled = false;
             numBeautryCount.Enabled = false;
-            numDelay.Enabled = false;
 
             int populationSize = (int)numPopulationSize.Value;
             population = new bool[populationSize];
@@ -72,7 +71,7 @@ namespace Genesis
             }
             else
             {
-             BeautyPercent = numBeautryCount.Value / populationSize; //тут ,чтобы не заморачиваться с кол-вом особей с геном, нашел сколько процентов составляют ососби с геном// 
+                BeautyPercent = numBeautryCount.Value / populationSize; //тут ,чтобы не заморачиваться с кол-вом особей с геном, нашел сколько процентов составляют ососби с геном// 
             }
            
             for (int bird = 0; bird < populationSize * BeautyPercent; bird++)
@@ -95,7 +94,6 @@ namespace Genesis
                 }
 
                 //Размножение
-                //TODO: создать интерфейс для количества потомков (2)--(сделал)
                 byte[] byteGeneration = new byte[populationSize * ((int)numChildrenNumber.Value + 1)];
                 int child = 0;
                 for (int bird = 0; bird < populationSize; bird++)
@@ -111,26 +109,26 @@ namespace Genesis
 
                 //Вымирание
                 Random rnd = new Random();
-                int count = population.Length;
-                while (count > 0)
+                int count2Kill = byteGeneration.Length - population.Length;
+                while (count2Kill > 0)
                     for (child = 0; child < byteGeneration.Length; child++)
                     {
                         int percent = rnd.Next(0, 100);
-                        if (byteGeneration[child] == 0 && percent > numPopulationSurvival.Value )//TODO: создать интерфейс для базовой выживаемости особи (70)(Сделал)
+                        if (byteGeneration[child] == 0 && percent > numPopulationSurvival.Value )
                         {
                             byteGeneration[child] = 255;
-                            count--;
+                            count2Kill--;
                         }
-                        if (byteGeneration[child] == 1 && percent > numPopulationSurvival.Value + numPopulationBonusSurvival.Value) //TODO: создать интерфейс бонусной выживаемости красивой особи (10)(Сделал)
+                        if (byteGeneration[child] == 1 && percent > numPopulationSurvival.Value + numPopulationBonusSurvival.Value)
                         {
                             byteGeneration[child] = 255;
-                            count--;
+                            count2Kill--;
                         }
-                        if (count == 0) break;
+                        if (count2Kill == 0) break;
                     }
 
                 //Перенос выживших особей из большого массива в стандартный
-                count = 0;
+                int count = 0;
                 for (child = 0; child < byteGeneration.Length; child++)
                 {
                     if (byteGeneration[child] == 0) { population[count++] = false; }
@@ -151,9 +149,6 @@ namespace Genesis
             numChildrenNumber.Enabled = true;
             numBeautyPercent.Enabled = true;
             numBeautryCount.Enabled = true;
-            numDelay.Enabled = true;
-
-
         }
 
         private void numPopulationSize_Scroll(object sender, ScrollEventArgs e)
