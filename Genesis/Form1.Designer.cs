@@ -46,14 +46,15 @@
             this.numDelay = new System.Windows.Forms.NumericUpDown();
             this.radGenPercent = new System.Windows.Forms.RadioButton();
             this.radGenCount = new System.Windows.Forms.RadioButton();
-            this.numBeautryCount = new System.Windows.Forms.NumericUpDown();
+            this.numBeautyCount = new System.Windows.Forms.NumericUpDown();
+            this.lblCount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numPopulationSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPopulationSurvival)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPopulationBonusSurvival)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numChildrenNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBeautyPercent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDelay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numBeautryCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numBeautyCount)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
@@ -126,6 +127,7 @@
             0,
             0,
             0});
+            this.numPopulationSize.ValueChanged += new System.EventHandler(this.numPopulationSize_ValueChanged);
             this.numPopulationSize.Scroll += new System.Windows.Forms.ScrollEventHandler(this.numPopulationSize_Scroll);
             // 
             // numPopulationSurvival
@@ -218,7 +220,7 @@
             1,
             0,
             0,
-            0});
+            196608});
             this.numBeautyPercent.Name = "numBeautyPercent";
             this.numBeautyPercent.Size = new System.Drawing.Size(96, 26);
             this.numBeautyPercent.TabIndex = 11;
@@ -306,34 +308,45 @@
             // 
             // numBeautryCount
             // 
-            this.numBeautryCount.Enabled = false;
-            this.numBeautryCount.Location = new System.Drawing.Point(512, 258);
-            this.numBeautryCount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.numBeautryCount.Maximum = new decimal(new int[] {
+            this.numBeautyCount.Enabled = false;
+            this.numBeautyCount.Location = new System.Drawing.Point(512, 258);
+            this.numBeautyCount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.numBeautyCount.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
-            this.numBeautryCount.Minimum = new decimal(new int[] {
+            this.numBeautyCount.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numBeautryCount.Name = "numBeautryCount";
-            this.numBeautryCount.Size = new System.Drawing.Size(136, 26);
-            this.numBeautryCount.TabIndex = 19;
-            this.numBeautryCount.Value = new decimal(new int[] {
+            this.numBeautyCount.Name = "numBeautryCount";
+            this.numBeautyCount.Size = new System.Drawing.Size(136, 26);
+            this.numBeautyCount.TabIndex = 19;
+            this.numBeautyCount.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
+            // 
+            // lblCount
+            // 
+            this.lblCount.AutoSize = true;
+            this.lblCount.Location = new System.Drawing.Point(148, 55);
+            this.lblCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCount.Name = "lblCount";
+            this.lblCount.Size = new System.Drawing.Size(130, 20);
+            this.lblCount.TabIndex = 20;
+            this.lblCount.Text = "Особей: 1 / 1000";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(658, 442);
-            this.Controls.Add(this.numBeautryCount);
+            this.Controls.Add(this.lblCount);
+            this.Controls.Add(this.numBeautyCount);
             this.Controls.Add(this.radGenCount);
             this.Controls.Add(this.radGenPercent);
             this.Controls.Add(this.label7);
@@ -364,7 +377,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numChildrenNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBeautyPercent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDelay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numBeautryCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numBeautyCount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -390,7 +403,8 @@
         private System.Windows.Forms.NumericUpDown numDelay;
         private System.Windows.Forms.RadioButton radGenPercent;
         private System.Windows.Forms.RadioButton radGenCount;
-        private System.Windows.Forms.NumericUpDown numBeautryCount;
+        private System.Windows.Forms.NumericUpDown numBeautyCount;
+        private System.Windows.Forms.Label lblCount;
     }
 }
 

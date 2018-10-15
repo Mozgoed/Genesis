@@ -19,12 +19,13 @@ namespace Genesis
 
         }
 
+        uint count = 0;
         /// <summary>
         /// Метод подсчитывает количество особей в популяции с геном красоты и выводит на экран
         /// </summary>
         void countBirds()
         {
-            double count = 0;
+            count = 0;
             for (int bird = 0; bird < population.Length; bird++)
             {
                 if (population[bird] == true)
@@ -33,8 +34,9 @@ namespace Genesis
             if (count == 0)
                 genBeauty.Value = 0;
             else
-                genBeauty.Value = (int)(count / population.Length * 100);
+                genBeauty.Value = (int)((double)count / population.Length * 100);
             lblBeautyPercent.Text = genBeauty.Value.ToString() + "%";
+            lblCount.Text = "Особей: " + count + " / " + numPopulationSize.Value;
             Application.DoEvents();
         }
 
@@ -59,7 +61,7 @@ namespace Genesis
             numPopulationBonusSurvival.Enabled = false;
             numChildrenNumber.Enabled = false;
             numBeautyPercent.Enabled = false;
-            numBeautryCount.Enabled = false;
+            numBeautyCount.Enabled = false;
 
             int populationSize = (int)numPopulationSize.Value;
             population = new bool[populationSize];
@@ -71,7 +73,7 @@ namespace Genesis
             }
             else
             {
-                BeautyPercent = numBeautryCount.Value / populationSize; //тут ,чтобы не заморачиваться с кол-вом особей с геном, нашел сколько процентов составляют ососби с геном// 
+                BeautyPercent = numBeautyCount.Value / populationSize; //тут ,чтобы не заморачиваться с кол-вом особей с геном, нашел сколько процентов составляют ососби с геном// 
             }
            
             for (int bird = 0; bird < populationSize * BeautyPercent; bird++)
@@ -83,7 +85,7 @@ namespace Genesis
             MessageBox.Show("Заполнена часть популяции особей с геном красоты \nНачало эмуляции...");
 
             uint step = 0;
-            while (genBeauty.Value < 100 && genBeauty.Value > 0)
+            while (genBeauty.Value < 100 && count > 0)
             {
                 //Проверка, что кто-то останавливает эмуляцию
                 if (stop)
@@ -148,7 +150,7 @@ namespace Genesis
             numPopulationBonusSurvival.Enabled = true;
             numChildrenNumber.Enabled = true;
             numBeautyPercent.Enabled = true;
-            numBeautryCount.Enabled = true;
+            numBeautyCount.Enabled = true;
         }
 
         private void numPopulationSize_Scroll(object sender, ScrollEventArgs e)
@@ -176,16 +178,27 @@ namespace Genesis
             {
                 radGenCount.Checked = false;
                 numBeautyPercent.Enabled = true;
-                numBeautryCount.Enabled = false;
+                numBeautyCount.Enabled = false;
             }
             else
             {
                 radGenCount.Checked = true;
                 numBeautyPercent.Enabled = false ;
-                numBeautryCount.Enabled = true;
+                numBeautyCount.Enabled = true;
             }
         }
 
-
+        private void numPopulationSize_ValueChanged(object sender, EventArgs e)
+        {
+            if(radGenPercent.Checked)
+            {
+                count = (uint)(numBeautyCount.Value * numPopulationSize.Value /100);
+                
+            } else
+            {
+                count = (uint)(numBeautyCount.Value);
+            }
+            lblCount.Text = "Особей: " + count + " / " + numPopulationSize.Value;
+        }
     }
 }
