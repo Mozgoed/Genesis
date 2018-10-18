@@ -46,14 +46,14 @@
             this.numDelay = new System.Windows.Forms.NumericUpDown();
             this.radGenPercent = new System.Windows.Forms.RadioButton();
             this.radGenCount = new System.Windows.Forms.RadioButton();
-            this.numBeautryCount = new System.Windows.Forms.NumericUpDown();
+            this.numBeautyCount = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numPopulationSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPopulationSurvival)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPopulationBonusSurvival)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numChildrenNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBeautyPercent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDelay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numBeautryCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numBeautyCount)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
@@ -126,7 +126,7 @@
             0,
             0,
             0});
-            this.numPopulationSize.Scroll += new System.Windows.Forms.ScrollEventHandler(this.numPopulationSize_Scroll);
+            this.numPopulationSize.Scroll += new System.Windows.Forms.ScrollEventHandler(this.num_Scroll);
             // 
             // numPopulationSurvival
             // 
@@ -141,7 +141,7 @@
             this.numPopulationSurvival.Size = new System.Drawing.Size(180, 26);
             this.numPopulationSurvival.TabIndex = 6;
             this.numPopulationSurvival.Value = new decimal(new int[] {
-            60,
+            80,
             0,
             0,
             0});
@@ -160,7 +160,7 @@
             this.numPopulationBonusSurvival.Size = new System.Drawing.Size(180, 26);
             this.numPopulationBonusSurvival.TabIndex = 7;
             this.numPopulationBonusSurvival.Value = new decimal(new int[] {
-            5,
+            2,
             0,
             0,
             0});
@@ -218,7 +218,7 @@
             1,
             0,
             0,
-            0});
+            196608});
             this.numBeautyPercent.Name = "numBeautyPercent";
             this.numBeautyPercent.Size = new System.Drawing.Size(96, 26);
             this.numBeautyPercent.TabIndex = 11;
@@ -304,25 +304,25 @@
             this.radGenCount.Text = "Кол-во особей с геном ";
             this.radGenCount.UseVisualStyleBackColor = true;
             // 
-            // numBeautryCount
+            // numBeautyCount
             // 
-            this.numBeautryCount.Enabled = false;
-            this.numBeautryCount.Location = new System.Drawing.Point(512, 258);
-            this.numBeautryCount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.numBeautryCount.Maximum = new decimal(new int[] {
+            this.numBeautyCount.Enabled = false;
+            this.numBeautyCount.Location = new System.Drawing.Point(512, 258);
+            this.numBeautyCount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.numBeautyCount.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
-            this.numBeautryCount.Minimum = new decimal(new int[] {
+            this.numBeautyCount.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numBeautryCount.Name = "numBeautryCount";
-            this.numBeautryCount.Size = new System.Drawing.Size(136, 26);
-            this.numBeautryCount.TabIndex = 19;
-            this.numBeautryCount.Value = new decimal(new int[] {
+            this.numBeautyCount.Name = "numBeautyCount";
+            this.numBeautyCount.Size = new System.Drawing.Size(136, 26);
+            this.numBeautyCount.TabIndex = 19;
+            this.numBeautyCount.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -333,7 +333,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(658, 442);
-            this.Controls.Add(this.numBeautryCount);
+            this.Controls.Add(this.numBeautyCount);
             this.Controls.Add(this.radGenCount);
             this.Controls.Add(this.radGenPercent);
             this.Controls.Add(this.label7);
@@ -354,6 +354,7 @@
             this.Controls.Add(this.btnStart);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(680, 56);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Genesis";
@@ -364,7 +365,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numChildrenNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBeautyPercent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDelay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numBeautryCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numBeautyCount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -390,7 +391,7 @@
         private System.Windows.Forms.NumericUpDown numDelay;
         private System.Windows.Forms.RadioButton radGenPercent;
         private System.Windows.Forms.RadioButton radGenCount;
-        private System.Windows.Forms.NumericUpDown numBeautryCount;
+        private System.Windows.Forms.NumericUpDown numBeautyCount;
     }
 }
 

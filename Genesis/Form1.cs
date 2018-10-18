@@ -18,13 +18,18 @@ namespace Genesis
         {
 
         }
+        //TODO: Добавить ТекстБокс и сделать привязку кнопки и его к форме
+        //TODO: Сделать окно расширяемым вниз FormBorderStyle и Size, Min...Size, Max...Size
+
+        
+        //Вот сюда можно вынести count <===
 
         /// <summary>
         /// Метод подсчитывает количество особей в популяции с геном красоты и выводит на экран
         /// </summary>
         void countBirds()
         {
-            double count = 0;
+            double count = 0; //TODO: Вынести count за пределы метода countBirds(). И поменять его тип с double на uint
             for (int bird = 0; bird < population.Length; bird++)
             {
                 if (population[bird] == true)
@@ -35,6 +40,11 @@ namespace Genesis
             else
                 genBeauty.Value = (int)(count / population.Length * 100);
             lblBeautyPercent.Text = genBeauty.Value.ToString() + "%";
+
+            //TODO: ДОбавить setState в местах, где необходима цветовая индикация
+            TaskbarProgress.SetValue( System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle, count, (int)numPopulationSize.Value);
+            TaskbarProgress.SetState(System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle, TaskbarProgress.TaskbarStates.Normal);
+
             Application.DoEvents();
         }
 
@@ -53,13 +63,10 @@ namespace Genesis
             }
 
             btnStart.Text = "Остановить";
-            //TODO: блокировать остальные кнопки и внизу разблокировать
-            numPopulationSize.Enabled = false;
-            numPopulationSurvival.Enabled = false;
-            numPopulationBonusSurvival.Enabled = false;
-            numChildrenNumber.Enabled = false;
-            numBeautyPercent.Enabled = false;
-            numBeautryCount.Enabled = false;
+            //Блокировка кнопок
+            numPopulationSize.Enabled = numPopulationSurvival.Enabled =
+            numPopulationBonusSurvival.Enabled = numChildrenNumber.Enabled =
+            numBeautyPercent.Enabled = numBeautyCount.Enabled = false;
 
             int populationSize = (int)numPopulationSize.Value;
             population = new bool[populationSize];
@@ -71,7 +78,7 @@ namespace Genesis
             }
             else
             {
-                BeautyPercent = numBeautryCount.Value / populationSize; //тут ,чтобы не заморачиваться с кол-вом особей с геном, нашел сколько процентов составляют ососби с геном// 
+                BeautyPercent = numBeautyCount.Value / populationSize; //тут ,чтобы не заморачиваться с кол-вом особей с геном, нашел сколько процентов составляют ососби с геном// 
             }
            
             for (int bird = 0; bird < populationSize * BeautyPercent; bird++)
@@ -80,16 +87,18 @@ namespace Genesis
             }
             countBirds();
 
+            //TODO: MessageBox тут уже не нужен и только раздражает. Он нужен был чтобы показать сколько процентов изначально в популяции. Теперь это будет вычисляться на ходу
             MessageBox.Show("Заполнена часть популяции особей с геном красоты \nНачало эмуляции...");
 
             uint step = 0;
+            //TODO: Программа не работает в режиме одной особи, потому что в таком случае genBeauty.Value уже сразу равен 0. Поэтому надо сравнивать с нулём переменную count, а не полосу зелёную
             while (genBeauty.Value < 100 && genBeauty.Value > 0)
             {
-                //Проверка, что кто-то останавливает эмуляцию
-                if (stop)
+                if (stop)//Проверка, что кто-то останавливает эмуляцию
                 {
                     btnStart.Text = "Пуск эмуляции";
                     stop = false;
+                    //TODO: ВКЛЮЧИТЬ тут кнопки
                     return;
                 }
 
@@ -98,7 +107,7 @@ namespace Genesis
                 int child = 0;
                 for (int bird = 0; bird < populationSize; bird++)
                 {
-                    for (int i = 0; i < (numChildrenNumber.Value + 1); i++)//И тут тоже
+                    for (int i = 0; i < (numChildrenNumber.Value + 1); i++)
                     {
                         if (population[bird] == true)
                             byteGeneration[child++] = 1;
@@ -143,26 +152,30 @@ namespace Genesis
             MessageBox.Show("Эмуляция завершена");
 
             btnStart.Text = "Пуск эмуляции";
+            //TODO: Включение кнопок укоротить
             numPopulationSize.Enabled = true;
             numPopulationSurvival.Enabled = true;
             numPopulationBonusSurvival.Enabled = true;
             numChildrenNumber.Enabled = true;
             numBeautyPercent.Enabled = true;
-            numBeautryCount.Enabled = true;
+            numBeautyCount.Enabled = true;
         }
 
-        private void numPopulationSize_Scroll(object sender, ScrollEventArgs e)
+        //TODO: При изменении размера популяции, % особей с геном, Кол-во особей с геном => Выводить на экран "Количество особей с геном" в объект Label.
+
+        private void num_Scroll(object sender, ScrollEventArgs e)
         {
             int N = e.NewValue - e.OldValue;
-            numPopulationSize.Value = numPopulationSize.Value + N*50;
+            NumericUpDown num = (NumericUpDown)sender;
+            num.Value = num.Value + N * 50;
         }
-
+        //TODO: Переделать на num_Scroll остальные методы со скроллом
         private void numPopulationSurvival_Scroll(object sender, ScrollEventArgs e)
         {
             int K = e.NewValue - e.OldValue;
             numPopulationSurvival.Value = numPopulationSurvival.Value + K * 50;
         }
-
+        //TODO: Максимальное количество особей с геном не должно быть выше всей популяции. У numBeautyCount - Maximum на 1 меньше, чем размер популяции numPopulationSize.Value
         private void numPopulationBonusSurvival_Scroll(object sender, ScrollEventArgs e)
         {
             int L = e.NewValue - e.OldValue;
@@ -171,21 +184,18 @@ namespace Genesis
 
         private void radGenPercent_CheckedChanged(object sender, EventArgs e)
         {
-            //TODO: при клике по левому RadioButton - выключается правый цифровой блок. И наоборот.(вроде сделал)
             if ( radGenPercent.Checked == true)
             {
                 radGenCount.Checked = false;
                 numBeautyPercent.Enabled = true;
-                numBeautryCount.Enabled = false;
+                numBeautyCount.Enabled = false;
             }
             else
             {
                 radGenCount.Checked = true;
                 numBeautyPercent.Enabled = false ;
-                numBeautryCount.Enabled = true;
+                numBeautyCount.Enabled = true;
             }
         }
-
-
     }
 }
