@@ -48,6 +48,8 @@
             this.radGenCount = new System.Windows.Forms.RadioButton();
             this.numBeautyCount = new System.Windows.Forms.NumericUpDown();
             this.lblCount = new System.Windows.Forms.Label();
+            this.txtLog = new System.Windows.Forms.TextBox();
+            this.btnPackageEmulation = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numPopulationSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPopulationSurvival)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPopulationBonusSurvival)).BeginInit();
@@ -59,8 +61,10 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(11, 251);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStart.Location = new System.Drawing.Point(11, 296);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(2);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(421, 29);
             this.btnStart.TabIndex = 0;
@@ -71,7 +75,7 @@
             // genBeauty
             // 
             this.genBeauty.Location = new System.Drawing.Point(101, 8);
-            this.genBeauty.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.genBeauty.Margin = new System.Windows.Forms.Padding(2);
             this.genBeauty.Name = "genBeauty";
             this.genBeauty.Size = new System.Drawing.Size(330, 26);
             this.genBeauty.TabIndex = 1;
@@ -114,7 +118,7 @@
             0,
             0});
             this.numPopulationSize.Location = new System.Drawing.Point(151, 60);
-            this.numPopulationSize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numPopulationSize.Margin = new System.Windows.Forms.Padding(2);
             this.numPopulationSize.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -133,8 +137,8 @@
             0,
             0,
             0});
-            this.numPopulationSize.ValueChanged += new System.EventHandler(this.numPopulationSize_ValueChanged);
-            this.numPopulationSize.Scroll += new System.Windows.Forms.ScrollEventHandler(this.numPopulationSize_Scroll);
+            this.numPopulationSize.ValueChanged += new System.EventHandler(this.num_ValueChanged);
+            this.numPopulationSize.Scroll += new System.Windows.Forms.ScrollEventHandler(this.num_Scroll);
             // 
             // numPopulationSurvival
             // 
@@ -152,7 +156,7 @@
             0,
             0,
             0});
-            this.numPopulationSurvival.Scroll += new System.Windows.Forms.ScrollEventHandler(this.numPopulationSurvival_Scroll);
+            this.numPopulationSurvival.Scroll += new System.Windows.Forms.ScrollEventHandler(this.num_Scroll);
             // 
             // numPopulationBonusSurvival
             // 
@@ -170,7 +174,7 @@
             0,
             0,
             0});
-            this.numPopulationBonusSurvival.Scroll += new System.Windows.Forms.ScrollEventHandler(this.numPopulationBonusSurvival_Scroll);
+            this.numPopulationBonusSurvival.Scroll += new System.Windows.Forms.ScrollEventHandler(this.num_Scroll);
             // 
             // label3
             // 
@@ -210,6 +214,11 @@
             // numBeautyPercent
             // 
             this.numBeautyPercent.DecimalPlaces = 3;
+            this.numBeautyPercent.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
             this.numBeautyPercent.Location = new System.Drawing.Point(129, 168);
             this.numBeautyPercent.Maximum = new decimal(new int[] {
             99,
@@ -229,7 +238,7 @@
             0,
             0,
             0});
-            this.numBeautyPercent.ValueChanged += new System.EventHandler(this.numBeautyPercent_ValueChanged);
+            this.numBeautyPercent.ValueChanged += new System.EventHandler(this.num_ValueChanged);
             // 
             // label5
             // 
@@ -285,7 +294,7 @@
             this.radGenPercent.AutoSize = true;
             this.radGenPercent.Checked = true;
             this.radGenPercent.Location = new System.Drawing.Point(11, 168);
-            this.radGenPercent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radGenPercent.Margin = new System.Windows.Forms.Padding(2);
             this.radGenPercent.Name = "radGenPercent";
             this.radGenPercent.Size = new System.Drawing.Size(118, 17);
             this.radGenPercent.TabIndex = 17;
@@ -298,7 +307,7 @@
             // 
             this.radGenCount.AutoSize = true;
             this.radGenCount.Location = new System.Drawing.Point(197, 168);
-            this.radGenCount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radGenCount.Margin = new System.Windows.Forms.Padding(2);
             this.radGenCount.Name = "radGenCount";
             this.radGenCount.Size = new System.Drawing.Size(144, 17);
             this.radGenCount.TabIndex = 18;
@@ -310,7 +319,7 @@
             this.numBeautyCount.Enabled = false;
             this.numBeautyCount.Location = new System.Drawing.Point(341, 168);
             this.numBeautyCount.Maximum = new decimal(new int[] {
-            99,
+            1000000,
             0,
             0,
             0});
@@ -327,7 +336,7 @@
             0,
             0,
             0});
-            this.numBeautyCount.ValueChanged += new System.EventHandler(this.numBeautyCount_ValueChanged);
+            this.numBeautyCount.ValueChanged += new System.EventHandler(this.num_ValueChanged);
             // 
             // lblCount
             // 
@@ -338,11 +347,41 @@
             this.lblCount.TabIndex = 20;
             this.lblCount.Text = "Особей: 100 / 10000";
             // 
+            // txtLog
+            // 
+            this.txtLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLog.BackColor = System.Drawing.Color.White;
+            this.txtLog.Location = new System.Drawing.Point(11, 219);
+            this.txtLog.Multiline = true;
+            this.txtLog.Name = "txtLog";
+            this.txtLog.ReadOnly = true;
+            this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtLog.Size = new System.Drawing.Size(421, 72);
+            this.txtLog.TabIndex = 21;
+            this.txtLog.Text = "Программа готова к эмуляции";
+            // 
+            // btnPackageEmulation
+            // 
+            this.btnPackageEmulation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPackageEmulation.Location = new System.Drawing.Point(362, 296);
+            this.btnPackageEmulation.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPackageEmulation.Name = "btnPackageEmulation";
+            this.btnPackageEmulation.Size = new System.Drawing.Size(70, 29);
+            this.btnPackageEmulation.TabIndex = 22;
+            this.btnPackageEmulation.Text = "Пакетная";
+            this.btnPackageEmulation.UseVisualStyleBackColor = true;
+            this.btnPackageEmulation.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(439, 287);
+            this.ClientSize = new System.Drawing.Size(439, 332);
+            this.Controls.Add(this.btnPackageEmulation);
+            this.Controls.Add(this.txtLog);
             this.Controls.Add(this.lblCount);
             this.Controls.Add(this.numBeautyCount);
             this.Controls.Add(this.radGenCount);
@@ -363,9 +402,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.genBeauty);
             this.Controls.Add(this.btnStart);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(455, 800);
+            this.MinimumSize = new System.Drawing.Size(455, 370);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Genesis";
@@ -404,6 +444,8 @@
         private System.Windows.Forms.RadioButton radGenCount;
         private System.Windows.Forms.NumericUpDown numBeautyCount;
         private System.Windows.Forms.Label lblCount;
+        private System.Windows.Forms.TextBox txtLog;
+        private System.Windows.Forms.Button btnPackageEmulation;
     }
 }
 

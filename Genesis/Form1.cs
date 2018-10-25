@@ -51,8 +51,6 @@ namespace Genesis
 
         bool stop = false;
         bool[] population;
-        //Чтобы увидеть все задачи TODO нажми: меню "Вид" > "Список задач"
-        //TODO: использовать в программе populationSize
         private void btnStart_Click(object sender, EventArgs e)
         {
             if(btnStart.Text == "Остановить")
@@ -64,27 +62,64 @@ namespace Genesis
                 return;
             }
 
-            btnStart.Text = "Остановить";
-            numPopulationSize.Enabled = false;
-            numPopulationSurvival.Enabled = false;
-            numPopulationBonusSurvival.Enabled = false;
-            numChildrenNumber.Enabled = false;
-            numBeautyPercent.Enabled = false;
-            numBeautyCount.Enabled = false;
+            LockControls(true);
+            txtLog.Text += "\r\n";
+            txtLog.Text += string.Format("\r\nЭмуляция: Особи/Популяция = {0}", lblCount.Text.Substring(lblCount.Text.IndexOf(" ")));
+            txtLog.Text += string.Format("\r\nБаза = {0}, Бонус = {1}, Потомки = {2}", numPopulationSurvival.Value, numPopulationBonusSurvival.Value, numChildrenNumber.Value);
 
+            bool result = Emulation();
+
+            TaskbarProgress.SetState(System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle, TaskbarProgress.TaskbarStates.Indeterminate);
+            if(result)
+                txtLog.Text += "\r\nРезультат: Ген победил. ";
+            else
+                txtLog.Text += "\r\nРезультат: Ген проиграл. ";
+            txtLog.Text += lblStep.Text;
+            MessageBox.Show("Эмуляция завершена");
+            TaskbarProgress.SetState(System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle, TaskbarProgress.TaskbarStates.NoProgress);
+
+            LockControls(false);
+        }
+
+        void LockControls(bool isLocked)
+        {
+            if(isLocked)
+            {
+                btnStart.Text = "Остановить";
+                //Блокировка кнопок
+                numPopulationSize.Enabled = numPopulationSurvival.Enabled =
+                numPopulationBonusSurvival.Enabled = numChildrenNumber.Enabled =
+                numBeautyPercent.Enabled = numBeautyCount.Enabled = radGenPercent.Enabled = radGenCount.Enabled = !isLocked;
+            }
+            else
+            {
+                btnStart.Text = "Пуск эмуляции";
+                //РазБлокировка кнопок
+                numPopulationSize.Enabled = numPopulationSurvival.Enabled =
+                numPopulationBonusSurvival.Enabled = numChildrenNumber.Enabled =
+                radGenPercent.Enabled = radGenCount.Enabled = !isLocked;
+                if (radGenPercent.Checked)
+                    numBeautyPercent.Enabled = !isLocked;
+                else
+                    numBeautyCount.Enabled = !isLocked;
+            }
+        }
+
+        private bool Emulation()
+        {
             int populationSize = (int)numPopulationSize.Value;
             population = new bool[populationSize];
             countBirds();
-            decimal BeautyPercent ;
-            if (radGenPercent.Checked == true)
+            decimal BeautyPercent;
+            if (radGenPercent.Checked)
             {
                 BeautyPercent = numBeautyPercent.Value / 100;
             }
             else
             {
-                BeautyPercent = numBeautyCount.Value / populationSize; //тут ,чтобы не заморачиваться с кол-вом особей с геном, нашел сколько процентов составляют ососби с геном// 
+                BeautyPercent = numBeautyCount.Value / populationSize;
             }
-           
+
             for (int bird = 0; bird < populationSize * BeautyPercent; bird++)
             {
                 population[bird] = true;
@@ -100,7 +135,7 @@ namespace Genesis
                     btnStart.Text = "Пуск эмуляции";
                     TaskbarProgress.SetState(System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle, TaskbarProgress.TaskbarStates.Normal);
                     stop = false;
-                    return;
+                    return false;
                 }
 
                 //Размножение
@@ -108,7 +143,7 @@ namespace Genesis
                 int child = 0;
                 for (int bird = 0; bird < populationSize; bird++)
                 {
-                    for (int i = 0; i < (numChildrenNumber.Value + 1); i++)//И тут тоже
+                    for (int i = 0; i < (numChildrenNumber.Value + 1); i++)
                     {
                         if (population[bird] == true)
                             byteGeneration[child++] = 1;
@@ -124,7 +159,7 @@ namespace Genesis
                     for (child = 0; child < byteGeneration.Length; child++)
                     {
                         int percent = rnd.Next(0, 100);
-                        if (byteGeneration[child] == 0 && percent > numPopulationSurvival.Value )
+                        if (byteGeneration[child] == 0 && percent > numPopulationSurvival.Value)
                         {
                             byteGeneration[child] = 255;
                             count2Kill--;
@@ -147,107 +182,52 @@ namespace Genesis
                 lblStep.Text = "Поколение: " + ++step;
                 countBirds();
 
-                if(numDelay.Value != 0)
-                    System.Threading.Thread.Sleep( (int)numDelay.Value );
+                if (numDelay.Value != 0)
+                    System.Threading.Thread.Sleep((int)numDelay.Value);
             }
-
-            TaskbarProgress.SetState(System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle, TaskbarProgress.TaskbarStates.Indeterminate);
-            MessageBox.Show("Эмуляция завершена");
-            TaskbarProgress.SetState(System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle, TaskbarProgress.TaskbarStates.NoProgress);
-
-            btnStart.Text = "Пуск эмуляции";
-            numPopulationSize.Enabled = true;
-            numPopulationSurvival.Enabled = true;
-            numPopulationBonusSurvival.Enabled = true;
-            numChildrenNumber.Enabled = true;
-            numBeautyPercent.Enabled = true;
-            numBeautyCount.Enabled = true;
+            if (count == 0) return false;
+            else return true;
         }
 
-        private void numPopulationSize_Scroll(object sender, ScrollEventArgs e)
+        private void num_Scroll(object sender, ScrollEventArgs e)
         {
+            NumericUpDown num = (NumericUpDown)sender;
             int N = e.NewValue - e.OldValue;
-            numPopulationSize.Value = numPopulationSize.Value + N*50;
-        }
-
-        private void numPopulationSurvival_Scroll(object sender, ScrollEventArgs e)
-        {
-            int K = e.NewValue - e.OldValue;
-            numPopulationSurvival.Value = numPopulationSurvival.Value + K * 50;
-        }
-
-        private void numPopulationBonusSurvival_Scroll(object sender, ScrollEventArgs e)
-        {
-            int L = e.NewValue - e.OldValue;
-            numPopulationBonusSurvival.Value = numPopulationBonusSurvival.Value + L * 50;
+            num.Value = num.Value + N*50;
         }
 
         private void radGenPercent_CheckedChanged(object sender, EventArgs e)
         {
-            if ( radGenPercent.Checked == true)
+            if ( radGenPercent.Checked)
             {
                 radGenCount.Checked = false;
                 numBeautyPercent.Enabled = true;
                 numBeautyCount.Enabled = false;
+                count = (uint)(numBeautyPercent.Value * numPopulationSize.Value / 100);
             }
             else
             {
                 radGenCount.Checked = true;
                 numBeautyPercent.Enabled = false ;
                 numBeautyCount.Enabled = true;
-            }
-            if (radGenPercent.Checked)
-            {
-                count = (uint)(numBeautyPercent.Value * numPopulationSize.Value / 100);
-            }
-            else
-            {
                 count = (uint)(numBeautyCount.Value);
             }
             lblCount.Text = "Особей: " + count + " / " + numPopulationSize.Value;
             genBeauty.Value = (int)((double)count / (double)numPopulationSize.Value * 100);
             lblBeautyPercent.Text = genBeauty.Value.ToString() + "%";
         }
-        
-        //TODO: Максимум не может быть меньше количества по особям
-        private void numPopulationSize_ValueChanged(object sender, EventArgs e)
+
+        private void num_ValueChanged(object sender, EventArgs e)
         {
+
             if (radGenPercent.Checked)
             {
                 count = (uint)(numBeautyPercent.Value * numPopulationSize.Value / 100);
             }
             else
             {
-                count = (uint)(numBeautyCount.Value);
-            }
-            lblCount.Text = "Особей: " + count + " / " + numPopulationSize.Value;
-            genBeauty.Value = (int)((double)count / (double)numPopulationSize.Value * 100);
-            lblBeautyPercent.Text = genBeauty.Value.ToString() + "%";
-        }
-        //TODO: Менять максимум в зависимости от общего количества
-        private void numBeautyCount_ValueChanged(object sender, EventArgs e)
-        {
-            if (radGenPercent.Checked)
-            {
-                count = (uint)(numBeautyPercent.Value * numPopulationSize.Value / 100);
-            }
-            else
-            {
-                count = (uint)(numBeautyCount.Value);
-            }
-            lblCount.Text = "Особей: " + count + " / " + numPopulationSize.Value;
-            genBeauty.Value = (int)((double)count / (double)numPopulationSize.Value * 100);
-            lblBeautyPercent.Text = genBeauty.Value.ToString() + "%";
-        }
-        //TODO: Объединить методы
-        private void numBeautyPercent_ValueChanged(object sender, EventArgs e)
-        {
-            if (radGenPercent.Checked)
-            {
-                count = (uint)(numBeautyPercent.Value * numPopulationSize.Value / 100);
-            }
-            else
-            {
+                if (numBeautyCount.Value >= numPopulationSize.Value) numBeautyCount.Value = numPopulationSize.Value-1;
+                
                 count = (uint)(numBeautyCount.Value);
             }
             lblCount.Text = "Особей: " + count + " / " + numPopulationSize.Value;
