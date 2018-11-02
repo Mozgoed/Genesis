@@ -18,7 +18,7 @@ namespace Genesis
         {
 
         }
-        //TODO: Добавить ТекстБокс и сделать привязку кнопки и его к форме
+      
         //TODO: Сделать окно расширяемым вниз FormBorderStyle и Size, Min...Size, Max...Size
 
         
@@ -87,8 +87,6 @@ namespace Genesis
             }
             countBirds();
 
-            //TODO: MessageBox тут уже не нужен и только раздражает. Он нужен был чтобы показать сколько процентов изначально в популяции. Теперь это будет вычисляться на ходу
-            MessageBox.Show("Заполнена часть популяции особей с геном красоты \nНачало эмуляции...");
 
             uint step = 0;
             //TODO: Программа не работает в режиме одной особи, потому что в таком случае genBeauty.Value уже сразу равен 0. Поэтому надо сравнивать с нулём переменную count, а не полосу зелёную
@@ -98,7 +96,7 @@ namespace Genesis
                 {
                     btnStart.Text = "Пуск эмуляции";
                     stop = false;
-                    //TODO: ВКЛЮЧИТЬ тут кнопки
+                    numPopulationSize.Enabled = numPopulationSurvival.Enabled = numPopulationBonusSurvival.Enabled = numChildrenNumber.Enabled = numBeautyPercent.Enabled = numBeautyCount.Enabled = true;
                     return;
                 }
 
@@ -152,12 +150,9 @@ namespace Genesis
             MessageBox.Show("Эмуляция завершена");
 
             btnStart.Text = "Пуск эмуляции";
-            //TODO: Включение кнопок укоротить
-            numPopulationSize.Enabled = true;
-            numPopulationSurvival.Enabled = true;
-            numPopulationBonusSurvival.Enabled = true;
-            numChildrenNumber.Enabled = true;
-            numBeautyPercent.Enabled = true;
+            numPopulationSize.Enabled = numPopulationSurvival.Enabled = numPopulationBonusSurvival.Enabled = numChildrenNumber.Enabled = numBeautyPercent.Enabled = numBeautyCount.Enabled = true;
+   
+         
             numBeautyCount.Enabled = true;
         }
 
@@ -175,7 +170,6 @@ namespace Genesis
             int K = e.NewValue - e.OldValue;
             numPopulationSurvival.Value = numPopulationSurvival.Value + K * 50;
         }
-        //TODO: Максимальное количество особей с геном не должно быть выше всей популяции. У numBeautyCount - Maximum на 1 меньше, чем размер популяции numPopulationSize.Value
         private void numPopulationBonusSurvival_Scroll(object sender, ScrollEventArgs e)
         {
             int L = e.NewValue - e.OldValue;
@@ -197,5 +191,12 @@ namespace Genesis
                 numBeautyCount.Enabled = true;
             }
         }
+
+        private void numPopulationSize_ValueChanged(object sender, EventArgs e)
+        {
+            numBeautyCount.Maximum = numPopulationSize.Value - 1;
+
+        }
+
     }
 }
