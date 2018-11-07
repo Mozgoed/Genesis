@@ -66,7 +66,7 @@
             this.btnStart.Location = new System.Drawing.Point(11, 296);
             this.btnStart.Margin = new System.Windows.Forms.Padding(2);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(421, 29);
+            this.btnStart.Size = new System.Drawing.Size(347, 29);
             this.btnStart.TabIndex = 0;
             this.btnStart.Text = "Пуск эмуляции";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -288,6 +288,7 @@
             0,
             0,
             0});
+            this.numDelay.ValueChanged += new System.EventHandler(this.numDelay_ValueChanged);
             // 
             // radGenPercent
             // 
@@ -354,6 +355,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLog.BackColor = System.Drawing.Color.White;
             this.txtLog.Location = new System.Drawing.Point(11, 219);
+            this.txtLog.MaxLength = 262144;
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
@@ -373,7 +375,7 @@
             this.btnPackageEmulation.TabIndex = 22;
             this.btnPackageEmulation.Text = "Пакетная";
             this.btnPackageEmulation.UseVisualStyleBackColor = true;
-            this.btnPackageEmulation.Visible = false;
+            this.btnPackageEmulation.Click += new System.EventHandler(this.btnPackageEmulation_Click);
             // 
             // Form1
             // 

@@ -25,3 +25,4 @@ C:\Users\mozgoed123\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.csproj.Co
 C:\Users\mozgoed123\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.exe
 C:\Users\mozgoed123\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.pdb
 C:\Users\mozgoed123\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.csprojAssemblyReference.cache
+C:\Users\Мозгоед\Documents\GitHub\Genesis\Genesis\bin\Debug\Genesis.exe.config
