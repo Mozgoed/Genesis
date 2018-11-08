@@ -47,8 +47,9 @@
             this.radGenPercent = new System.Windows.Forms.RadioButton();
             this.radGenCount = new System.Windows.Forms.RadioButton();
             this.numBeautyCount = new System.Windows.Forms.NumericUpDown();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtLog = new System.Windows.Forms.TextBox();
             this.lblGenCount = new System.Windows.Forms.Label();
+            this.btnAbout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numPopulationSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPopulationSurvival)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPopulationBonusSurvival)).BeginInit();
@@ -332,19 +333,19 @@
             0,
             0});
             // 
-            // textBox1
+            // txtLog
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(18, 346);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(626, 72);
-            this.textBox1.TabIndex = 20;
-            this.textBox1.Text = "Программа готова к работе";
+            this.txtLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.txtLog.BackColor = System.Drawing.Color.White;
+            this.txtLog.Location = new System.Drawing.Point(18, 346);
+            this.txtLog.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtLog.Multiline = true;
+            this.txtLog.Name = "txtLog";
+            this.txtLog.ReadOnly = true;
+            this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtLog.Size = new System.Drawing.Size(626, 72);
+            this.txtLog.TabIndex = 20;
+            this.txtLog.Text = "Программа готова к работе";
             // 
             // lblGenCount
             // 
@@ -355,13 +356,24 @@
             this.lblGenCount.TabIndex = 21;
             this.lblGenCount.Text = "/";
             // 
+            // btnAbout
+            // 
+            this.btnAbout.Location = new System.Drawing.Point(480, 138);
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.Size = new System.Drawing.Size(123, 50);
+            this.btnAbout.TabIndex = 22;
+            this.btnAbout.Text = "Коллекции";
+            this.btnAbout.UseVisualStyleBackColor = true;
+            this.btnAbout.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(650, 489);
+            this.Controls.Add(this.btnAbout);
             this.Controls.Add(this.lblGenCount);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtLog);
             this.Controls.Add(this.numBeautyCount);
             this.Controls.Add(this.radGenCount);
             this.Controls.Add(this.radGenPercent);
@@ -422,8 +434,9 @@
         private System.Windows.Forms.RadioButton radGenPercent;
         private System.Windows.Forms.RadioButton radGenCount;
         private System.Windows.Forms.NumericUpDown numBeautyCount;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtLog;
         private System.Windows.Forms.Label lblGenCount;
+        private System.Windows.Forms.Button btnAbout;
     }
 }
 

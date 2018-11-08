@@ -54,6 +54,8 @@ namespace Genesis
         //TODO: использовать в программе populationSize
         private void btnStart_Click(object sender, EventArgs e)
         {
+            txtLog.Text += "\r\nПривет!";
+            
             if(btnStart.Text == "Остановить")
             {
                 btnStart.Text = "Остановка эмуляции...";
@@ -198,5 +200,10 @@ namespace Genesis
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            About about = new About();
+            about.ShowDialog();
+        }
     }
 }
