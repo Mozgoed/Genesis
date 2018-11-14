@@ -18,8 +18,8 @@ namespace Genesis
         {
 
         }
-        //TODO: Добавить ТекстБокс и сделать привязку кнопки и его к форме
-        //TODO: Сделать окно расширяемым вниз FormBorderStyle и Size, Min...Size, Max...Size
+        //TODO: Добавить ТекстБокс и сделать привязку кнопки и его к форме +++
+        //TODO: Сделать окно расширяемым вниз FormBorderStyle и Size, Min...Size, Max...Size +++
 
         
         //Вот сюда можно вынести count <===
@@ -54,7 +54,7 @@ namespace Genesis
         //TODO: использовать в программе populationSize
         private void btnStart_Click(object sender, EventArgs e)
         {
-            if(btnStart.Text == "Остановить")
+            if (btnStart.Text == "Остановить")
             {
                 btnStart.Text = "Остановка эмуляции...";
                 Application.DoEvents();
@@ -71,7 +71,7 @@ namespace Genesis
             int populationSize = (int)numPopulationSize.Value;
             population = new bool[populationSize];
             countBirds();
-            decimal BeautyPercent ;
+            decimal BeautyPercent;
             if (radGenPercent.Checked == true)
             {
                 BeautyPercent = numBeautyPercent.Value / 100;
@@ -80,7 +80,7 @@ namespace Genesis
             {
                 BeautyPercent = numBeautyCount.Value / populationSize; //тут ,чтобы не заморачиваться с кол-вом особей с геном, нашел сколько процентов составляют ососби с геном// 
             }
-           
+
             for (int bird = 0; bird < populationSize * BeautyPercent; bird++)
             {
                 population[bird] = true;
@@ -123,7 +123,7 @@ namespace Genesis
                     for (child = 0; child < byteGeneration.Length; child++)
                     {
                         int percent = rnd.Next(0, 100);
-                        if (byteGeneration[child] == 0 && percent > numPopulationSurvival.Value )
+                        if (byteGeneration[child] == 0 && percent > numPopulationSurvival.Value)
                         {
                             byteGeneration[child] = 255;
                             count2Kill--;
@@ -146,21 +146,15 @@ namespace Genesis
                 lblStep.Text = "Поколение: " + ++step;
                 countBirds();
 
-                if(numDelay.Value != 0)
-                    System.Threading.Thread.Sleep( (int)numDelay.Value );
+                if (numDelay.Value != 0)
+                    System.Threading.Thread.Sleep((int)numDelay.Value);
             }
             MessageBox.Show("Эмуляция завершена");
 
             btnStart.Text = "Пуск эмуляции";
-            //TODO: Включение кнопок укоротить
-            numPopulationSize.Enabled = true;
-            numPopulationSurvival.Enabled = true;
-            numPopulationBonusSurvival.Enabled = true;
-            numChildrenNumber.Enabled = true;
-            numBeautyPercent.Enabled = true;
-            numBeautyCount.Enabled = true;
+            //Включение кнопок 
+            numPopulationSize.Enabled = numPopulationSurvival.Enabled = numPopulationBonusSurvival.Enabled = numChildrenNumber.Enabled = numBeautyPercent.Enabled = numBeautyCount.Enabled = true;
         }
-
         //TODO: При изменении размера популяции, % особей с геном, Кол-во особей с геном => Выводить на экран "Количество особей с геном" в объект Label.
 
         private void num_Scroll(object sender, ScrollEventArgs e)
@@ -196,6 +190,11 @@ namespace Genesis
                 numBeautyPercent.Enabled = false ;
                 numBeautyCount.Enabled = true;
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
