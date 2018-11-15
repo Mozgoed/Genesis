@@ -30,134 +30,197 @@
         {
             this.txtTasks = new System.Windows.Forms.TextBox();
             this.btnRefresh = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnDeleteX = new System.Windows.Forms.Button();
+            this.btnOrder = new System.Windows.Forms.Button();
+            this.btnSort = new System.Windows.Forms.Button();
+            this.btnDeleteAll = new System.Windows.Forms.Button();
+            this.btnAddX = new System.Windows.Forms.Button();
+            this.btnReversSort = new System.Windows.Forms.Button();
+            this.btnSwap = new System.Windows.Forms.Button();
+            this.txtAdd = new System.Windows.Forms.TextBox();
+            this.txtAddX = new System.Windows.Forms.TextBox();
+            this.numX = new System.Windows.Forms.NumericUpDown();
+            this.numDelete = new System.Windows.Forms.NumericUpDown();
+            this.numB = new System.Windows.Forms.NumericUpDown();
+            this.numA = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDelete)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numA)).BeginInit();
             this.SuspendLayout();
             // 
             // txtTasks
             // 
-            this.txtTasks.Location = new System.Drawing.Point(12, 12);
+            this.txtTasks.Location = new System.Drawing.Point(8, 8);
+            this.txtTasks.Margin = new System.Windows.Forms.Padding(2);
             this.txtTasks.Multiline = true;
             this.txtTasks.Name = "txtTasks";
-            this.txtTasks.Size = new System.Drawing.Size(513, 194);
+            this.txtTasks.Size = new System.Drawing.Size(343, 127);
             this.txtTasks.TabIndex = 0;
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(531, 12);
+            this.btnRefresh.Location = new System.Drawing.Point(354, 8);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(2);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(96, 45);
+            this.btnRefresh.Size = new System.Drawing.Size(64, 29);
             this.btnRefresh.TabIndex = 1;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
-            // label1
+            // btnAdd
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(273, 234);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Сделать";
+            this.btnAdd.Location = new System.Drawing.Point(8, 140);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(108, 34);
+            this.btnAdd.TabIndex = 11;
+            this.btnAdd.Text = "Добавить новый элемент";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // label2
+            // btnDeleteX
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 281);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(238, 20);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Добавление нового элемента";
+            this.btnDeleteX.Location = new System.Drawing.Point(8, 180);
+            this.btnDeleteX.Name = "btnDeleteX";
+            this.btnDeleteX.Size = new System.Drawing.Size(108, 34);
+            this.btnDeleteX.TabIndex = 12;
+            this.btnDeleteX.Text = "Удалить элемент Х";
+            this.btnDeleteX.UseVisualStyleBackColor = true;
+            this.btnDeleteX.Click += new System.EventHandler(this.btnDeleteX_Click);
             // 
-            // label3
+            // btnOrder
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(33, 325);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(164, 20);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Удаление элемента";
+            this.btnOrder.Location = new System.Drawing.Point(218, 314);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Size = new System.Drawing.Size(110, 68);
+            this.btnOrder.TabIndex = 13;
+            this.btnOrder.Text = "Поменять порядок на обратный ";
+            this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
-            // label4
+            // btnSort
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(33, 366);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(210, 20);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Удаление всех элементов";
+            this.btnSort.Location = new System.Drawing.Point(8, 315);
+            this.btnSort.Name = "btnSort";
+            this.btnSort.Size = new System.Drawing.Size(94, 67);
+            this.btnSort.TabIndex = 14;
+            this.btnSort.Text = "Отсортировать ";
+            this.btnSort.UseVisualStyleBackColor = true;
+            this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
             // 
-            // label5
+            // btnDeleteAll
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(285, 404);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(237, 20);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Поменять элементы местами";
+            this.btnDeleteAll.Location = new System.Drawing.Point(334, 314);
+            this.btnDeleteAll.Name = "btnDeleteAll";
+            this.btnDeleteAll.Size = new System.Drawing.Size(80, 67);
+            this.btnDeleteAll.TabIndex = 15;
+            this.btnDeleteAll.Text = "Удалить всё ";
+            this.btnDeleteAll.UseVisualStyleBackColor = true;
+            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
             // 
-            // label6
+            // btnAddX
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(285, 281);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(342, 20);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Поменять порядок элементов на обратный";
+            this.btnAddX.Location = new System.Drawing.Point(8, 220);
+            this.btnAddX.Name = "btnAddX";
+            this.btnAddX.Size = new System.Drawing.Size(108, 34);
+            this.btnAddX.TabIndex = 16;
+            this.btnAddX.Text = "Вставить элемент на место Х";
+            this.btnAddX.UseVisualStyleBackColor = true;
+            this.btnAddX.Click += new System.EventHandler(this.btnAddX_Click);
             // 
-            // label7
+            // btnReversSort
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(285, 325);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(209, 20);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Отсортировать элементы";
+            this.btnReversSort.Location = new System.Drawing.Point(108, 315);
+            this.btnReversSort.Name = "btnReversSort";
+            this.btnReversSort.Size = new System.Drawing.Size(104, 67);
+            this.btnReversSort.TabIndex = 17;
+            this.btnReversSort.Text = "Отсортировать наоборот ";
+            this.btnReversSort.UseVisualStyleBackColor = true;
+            this.btnReversSort.Click += new System.EventHandler(this.btnReversSort_Click);
             // 
-            // label8
+            // btnSwap
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(285, 366);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(285, 20);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "Отсортировать элементы наоборот";
+            this.btnSwap.Location = new System.Drawing.Point(8, 260);
+            this.btnSwap.Name = "btnSwap";
+            this.btnSwap.Size = new System.Drawing.Size(108, 48);
+            this.btnSwap.TabIndex = 18;
+            this.btnSwap.Text = "Поменять элементы местами ";
+            this.btnSwap.UseVisualStyleBackColor = true;
+            this.btnSwap.Click += new System.EventHandler(this.btnSwap_Click);
             // 
-            // label9
+            // txtAdd
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(32, 404);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(239, 20);
-            this.label9.TabIndex = 10;
-            this.label9.Text = "Вставить элемент на место Х";
+            this.txtAdd.Location = new System.Drawing.Point(122, 148);
+            this.txtAdd.Name = "txtAdd";
+            this.txtAdd.Size = new System.Drawing.Size(296, 20);
+            this.txtAdd.TabIndex = 19;
+            // 
+            // txtAddX
+            // 
+            this.txtAddX.Location = new System.Drawing.Point(122, 224);
+            this.txtAddX.Name = "txtAddX";
+            this.txtAddX.Size = new System.Drawing.Size(226, 20);
+            this.txtAddX.TabIndex = 21;
+            // 
+            // numX
+            // 
+            this.numX.Location = new System.Drawing.Point(354, 224);
+            this.numX.Name = "numX";
+            this.numX.Size = new System.Drawing.Size(60, 20);
+            this.numX.TabIndex = 23;
+            // 
+            // numDelete
+            // 
+            this.numDelete.Location = new System.Drawing.Point(122, 189);
+            this.numDelete.Name = "numDelete";
+            this.numDelete.Size = new System.Drawing.Size(60, 20);
+            this.numDelete.TabIndex = 24;
+            // 
+            // numB
+            // 
+            this.numB.Location = new System.Drawing.Point(193, 276);
+            this.numB.Name = "numB";
+            this.numB.Size = new System.Drawing.Size(60, 20);
+            this.numB.TabIndex = 25;
+            // 
+            // numA
+            // 
+            this.numA.Location = new System.Drawing.Point(122, 276);
+            this.numA.Name = "numA";
+            this.numA.Size = new System.Drawing.Size(60, 20);
+            this.numA.TabIndex = 26;
             // 
             // About
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 504);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(421, 389);
+            this.Controls.Add(this.numA);
+            this.Controls.Add(this.numB);
+            this.Controls.Add(this.numDelete);
+            this.Controls.Add(this.numX);
+            this.Controls.Add(this.txtAddX);
+            this.Controls.Add(this.txtAdd);
+            this.Controls.Add(this.btnSwap);
+            this.Controls.Add(this.btnReversSort);
+            this.Controls.Add(this.btnAddX);
+            this.Controls.Add(this.btnDeleteAll);
+            this.Controls.Add(this.btnSort);
+            this.Controls.Add(this.btnOrder);
+            this.Controls.Add(this.btnDeleteX);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.txtTasks);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "About";
             this.Text = "About";
+            ((System.ComponentModel.ISupportInitialize)(this.numX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDelete)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numA)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,14 +230,19 @@
 
         private System.Windows.Forms.TextBox txtTasks;
         private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnDeleteX;
+        private System.Windows.Forms.Button btnOrder;
+        private System.Windows.Forms.Button btnSort;
+        private System.Windows.Forms.Button btnDeleteAll;
+        private System.Windows.Forms.Button btnAddX;
+        private System.Windows.Forms.Button btnReversSort;
+        private System.Windows.Forms.Button btnSwap;
+        private System.Windows.Forms.TextBox txtAdd;
+        private System.Windows.Forms.TextBox txtAddX;
+        private System.Windows.Forms.NumericUpDown numX;
+        private System.Windows.Forms.NumericUpDown numDelete;
+        private System.Windows.Forms.NumericUpDown numB;
+        private System.Windows.Forms.NumericUpDown numA;
     }
 }
