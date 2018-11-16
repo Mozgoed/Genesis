@@ -45,7 +45,7 @@ namespace Genesis
             {
                 txtTasks.Text += (s + "\r\n");
             }
-            //txtAdd.MouseClick; Мне надоело каждый раз кликать на поле ввода , поэтому я пытался сделать , чтобы после нажатия на кнопку можно было сразу начать ввод , но оно не работает :(((
+            txtAdd.Focus();
         }
 
         private void btnDeleteX_Click(object sender, EventArgs e)
@@ -66,6 +66,7 @@ namespace Genesis
             {
                 txtTasks.Text += (s + "\r\n");
             }
+            txtAddX.Focus();
         }
 
         private void btnSwap_Click(object sender, EventArgs e)

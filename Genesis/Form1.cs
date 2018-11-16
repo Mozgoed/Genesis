@@ -18,18 +18,15 @@ namespace Genesis
         {
 
         }
-      
-        //TODO: Сделать окно расширяемым вниз FormBorderStyle и Size, Min...Size, Max...Size
 
-        
+
         //Вот сюда можно вынести count <===
-
+        uint count = 0;
         /// <summary>
         /// Метод подсчитывает количество особей в популяции с геном красоты и выводит на экран
         /// </summary>
         void countBirds()
         {
-            double count = 0; //TODO: Вынести count за пределы метода countBirds(). И поменять его тип с double на uint
             for (int bird = 0; bird < population.Length; bird++)
             {
                 if (population[bird] == true)
@@ -38,9 +35,10 @@ namespace Genesis
             if (count == 0)
                 genBeauty.Value = 0;
             else
-                genBeauty.Value = (int)(count / population.Length * 100);
+                genBeauty.Value = (int)(count / numPopulationSize.Value * 100);
             lblBeautyPercent.Text = genBeauty.Value.ToString() + "%";
-
+            // При изменении размера популяции, % особей с геном, Кол-во особей с геном => Выводить на экран "Количество особей с геном" в объект Label.   
+            lblGenCount.Text = count.ToString();
             //TODO: ДОбавить setState в местах, где необходима цветовая индикация
             TaskbarProgress.SetValue( System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle, count, (int)numPopulationSize.Value);
             TaskbarProgress.SetState(System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle, TaskbarProgress.TaskbarStates.Normal);
@@ -51,7 +49,6 @@ namespace Genesis
         bool stop = false;
         bool[] population;
         //Чтобы увидеть все задачи TODO нажми: меню "Вид" > "Список задач"
-        //TODO: использовать в программе populationSize
         private void btnStart_Click(object sender, EventArgs e)
         {
             txtLog.Text += "\r\nПривет!";
@@ -80,7 +77,7 @@ namespace Genesis
             }
             else
             {
-                BeautyPercent = numBeautyCount.Value / populationSize; //тут ,чтобы не заморачиваться с кол-вом особей с геном, нашел сколько процентов составляют ососби с геном// 
+                BeautyPercent = numBeautyCount.Value / populationSize; 
             }
            
             for (int bird = 0; bird < populationSize * BeautyPercent; bird++)
@@ -91,8 +88,7 @@ namespace Genesis
 
 
             uint step = 0;
-            //TODO: Программа не работает в режиме одной особи, потому что в таком случае genBeauty.Value уже сразу равен 0. Поэтому надо сравнивать с нулём переменную count, а не полосу зелёную
-            while (genBeauty.Value < 100 && genBeauty.Value > 0)
+            while (count < populationSize && count > 0)
             {
                 if (stop)//Проверка, что кто-то останавливает эмуляцию
                 {
@@ -157,26 +153,14 @@ namespace Genesis
          
             numBeautyCount.Enabled = true;
         }
-
-        //TODO: При изменении размера популяции, % особей с геном, Кол-во особей с геном => Выводить на экран "Количество особей с геном" в объект Label.
-
-        private void num_Scroll(object sender, ScrollEventArgs e)
+         
+         void num_Scroll(object sender, ScrollEventArgs e)
         {
             int N = e.NewValue - e.OldValue;
             NumericUpDown num = (NumericUpDown)sender;
             num.Value = num.Value + N * 50;
         }
-        //TODO: Переделать на num_Scroll остальные методы со скроллом
-        private void numPopulationSurvival_Scroll(object sender, ScrollEventArgs e)
-        {
-            int K = e.NewValue - e.OldValue;
-            numPopulationSurvival.Value = numPopulationSurvival.Value + K * 50;
-        }
-        private void numPopulationBonusSurvival_Scroll(object sender, ScrollEventArgs e)
-        {
-            int L = e.NewValue - e.OldValue;
-            numPopulationBonusSurvival.Value = numPopulationBonusSurvival.Value + L * 50;
-        }
+
 
         private void radGenPercent_CheckedChanged(object sender, EventArgs e)
         {
