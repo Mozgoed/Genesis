@@ -21,13 +21,14 @@ namespace Genesis
 
 
         //Вот сюда можно вынести count <===
-        uint count = 0;
+        uint count = 0; 
+
         /// <summary>
         /// Метод подсчитывает количество особей в популяции с геном красоты и выводит на экран
         /// </summary>
         void countBirds()
         {
-            for (int bird = 0; bird < population.Length; bird++)
+            for (int bird = 0; bird < population.Count; bird++)
             {
                 if (population[bird] == true)
                     count++;
@@ -35,7 +36,11 @@ namespace Genesis
             if (count == 0)
                 genBeauty.Value = 0;
             else
-                genBeauty.Value = (int)(count / numPopulationSize.Value * 100);
+            {
+                int genbeauty = (int)(count / numPopulationSize.Value * 100);
+                if (genbeauty <= genBeauty.Maximum) { genBeauty.Value = genbeauty; }
+                else { genBeauty.Value = genBeauty.Maximum; }
+            }
             lblBeautyPercent.Text = genBeauty.Value.ToString() + "%";
             // При изменении размера популяции, % особей с геном, Кол-во особей с геном => Выводить на экран "Количество особей с геном" в объект Label.   
             lblGenCount.Text = count.ToString();
@@ -47,7 +52,8 @@ namespace Genesis
         }
 
         bool stop = false;
-        bool[] population;
+
+        List<bool> population = new List<bool>();
         //Чтобы увидеть все задачи TODO нажми: меню "Вид" > "Список задач"
         private void btnStart_Click(object sender, EventArgs e)
         {
@@ -68,8 +74,13 @@ namespace Genesis
             numBeautyPercent.Enabled = numBeautyCount.Enabled = false;
 
             int populationSize = (int)numPopulationSize.Value;
-            population = new bool[populationSize];
+            //Заполнил коллекцию птицами 
+            for (int i = 0; i < populationSize; i++)
+            {
+                population.Add(false);
+            }
             countBirds();
+            //Выбрал птиц с генами 
             decimal BeautyPercent ;
             if (radGenPercent.Checked == true)
             {
@@ -98,46 +109,31 @@ namespace Genesis
                     return;
                 }
 
-                //Размножение
-                byte[] byteGeneration = new byte[populationSize * ((int)numChildrenNumber.Value + 1)];
-                int child = 0;
-                for (int bird = 0; bird < populationSize; bird++)
+                //Размножение2.0
+                for (int child = 0; child < populationSize; child++)
                 {
-                    for (int i = 0; i < (numChildrenNumber.Value + 1); i++)
-                    {
-                        if (population[bird] == true)
-                            byteGeneration[child++] = 1;
-                        else
-                            byteGeneration[child++] = 0;
-                    }
+                    if (population[child] == true)
+                        for (int i = 0; i < numChildrenNumber.Value; i++)
+                        { population.Add(true); }
+                    else
+                        for (int i = 0; i < numChildrenNumber.Value; i++)
+                        { population.Add(false); }
                 }
 
-                //Вымирание
+                //Вымирание2.0
                 Random rnd = new Random();
-                int count2Kill = byteGeneration.Length - population.Length;
-                while (count2Kill > 0)
-                    for (child = 0; child < byteGeneration.Length; child++)
+                while (population.Count > populationSize)
+                {
+                    for (int i = 0; i < population.Count; i++)
                     {
                         int percent = rnd.Next(0, 100);
-                        if (byteGeneration[child] == 0 && percent > numPopulationSurvival.Value )
-                        {
-                            byteGeneration[child] = 255;
-                            count2Kill--;
-                        }
-                        if (byteGeneration[child] == 1 && percent > numPopulationSurvival.Value + numPopulationBonusSurvival.Value)
-                        {
-                            byteGeneration[child] = 255;
-                            count2Kill--;
-                        }
-                        if (count2Kill == 0) break;
+                        if (population[i] == true && percent > numPopulationSurvival.Value + numPopulationBonusSurvival.Value)
+                            population.RemoveAt(i);
+                        if (i == population.Count) break;
+                        if (population.Count == populationSize) break;
+                        if (population[i] == false && percent > numPopulationSurvival.Value)
+                            population.RemoveAt(i);
                     }
-
-                //Перенос выживших особей из большого массива в стандартный
-                int count = 0;
-                for (child = 0; child < byteGeneration.Length; child++)
-                {
-                    if (byteGeneration[child] == 0) { population[count++] = false; }
-                    if (byteGeneration[child] == 1) { population[count++] = true; }
                 }
                 lblStep.Text = "Поколение: " + ++step;
                 countBirds();
@@ -150,8 +146,7 @@ namespace Genesis
             btnStart.Text = "Пуск эмуляции";
             numPopulationSize.Enabled = numPopulationSurvival.Enabled = numPopulationBonusSurvival.Enabled = numChildrenNumber.Enabled = numBeautyPercent.Enabled = numBeautyCount.Enabled = true;
    
-         
-            numBeautyCount.Enabled = true;
+       
         }
          
          void num_Scroll(object sender, ScrollEventArgs e)
