@@ -136,9 +136,13 @@ namespace Genesis
                     }
                 }
                 lblStep.Text = "Поколение: " + ++step;
+                uint A = count; 
                 countBirds();
+                uint P = (uint)(populationSize - count) / (count - A);
+                if (count > populationSize) P = 0;
+                txtLog.Text += ("\r\n" + "Кол-во птиц с геном через " + step + " поколение : " + count + "\r\n" + "Птицы без гена вымрут приблизительно через " + P + " поколений");
 
-                if(numDelay.Value != 0)
+                if (numDelay.Value != 0)
                     System.Threading.Thread.Sleep( (int)numDelay.Value );
             }
             MessageBox.Show("Эмуляция завершена");
