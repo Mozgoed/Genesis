@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.genBeauty = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.lblBeautyPercent = new System.Windows.Forms.Label();
@@ -69,7 +68,7 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(8, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -80,12 +79,12 @@
             // 
             // lblBeautyPercent
             // 
-            this.lblBeautyPercent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblBeautyPercent.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblBeautyPercent.AutoSize = true;
             this.lblBeautyPercent.Location = new System.Drawing.Point(258, 36);
             this.lblBeautyPercent.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBeautyPercent.Name = "lblBeautyPercent";
-            this.lblBeautyPercent.Size = new System.Drawing.Size(21, 13);
+            this.lblBeautyPercent.Size = new System.Drawing.Size(24, 13);
             this.lblBeautyPercent.TabIndex = 3;
             this.lblBeautyPercent.Text = "0%";
             // 
@@ -96,7 +95,7 @@
             this.label2.Location = new System.Drawing.Point(8, 61);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 13);
+            this.label2.Size = new System.Drawing.Size(99, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Размер популяции";
             // 
@@ -121,7 +120,7 @@
             0,
             0});
             this.numPopulationSize.Name = "numPopulationSize";
-            this.numPopulationSize.Size = new System.Drawing.Size(93, 20);
+            this.numPopulationSize.Size = new System.Drawing.Size(93, 21);
             this.numPopulationSize.TabIndex = 5;
             this.numPopulationSize.Value = new decimal(new int[] {
             1000,
@@ -140,7 +139,7 @@
             0,
             0});
             this.numPopulationSurvival.Name = "numPopulationSurvival";
-            this.numPopulationSurvival.Size = new System.Drawing.Size(120, 20);
+            this.numPopulationSurvival.Size = new System.Drawing.Size(120, 21);
             this.numPopulationSurvival.TabIndex = 6;
             this.numPopulationSurvival.Value = new decimal(new int[] {
             80,
@@ -159,7 +158,7 @@
             0,
             -2147483648});
             this.numPopulationBonusSurvival.Name = "numPopulationBonusSurvival";
-            this.numPopulationBonusSurvival.Size = new System.Drawing.Size(120, 20);
+            this.numPopulationBonusSurvival.Size = new System.Drawing.Size(120, 21);
             this.numPopulationBonusSurvival.TabIndex = 7;
             this.numPopulationBonusSurvival.Value = new decimal(new int[] {
             2,
@@ -174,7 +173,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(7, 91);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(133, 13);
+            this.label3.Size = new System.Drawing.Size(129, 13);
             this.label3.TabIndex = 8;
             this.label3.Text = "Базовая выживаемость ";
             // 
@@ -184,7 +183,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(7, 119);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(138, 13);
+            this.label4.Size = new System.Drawing.Size(135, 13);
             this.label4.TabIndex = 9;
             this.label4.Text = "Бонусная выживаемость ";
             // 
@@ -198,7 +197,7 @@
             0,
             0});
             this.numChildrenNumber.Name = "numChildrenNumber";
-            this.numChildrenNumber.Size = new System.Drawing.Size(120, 20);
+            this.numChildrenNumber.Size = new System.Drawing.Size(120, 21);
             this.numChildrenNumber.TabIndex = 10;
             this.numChildrenNumber.Value = new decimal(new int[] {
             4,
@@ -222,7 +221,7 @@
             0,
             196608});
             this.numBeautyPercent.Name = "numBeautyPercent";
-            this.numBeautyPercent.Size = new System.Drawing.Size(64, 20);
+            this.numBeautyPercent.Size = new System.Drawing.Size(64, 21);
             this.numBeautyPercent.TabIndex = 11;
             this.numBeautyPercent.Value = new decimal(new int[] {
             1,
@@ -242,7 +241,7 @@
             // 
             // lblStep
             // 
-            this.lblStep.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblStep.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblStep.AutoSize = true;
             this.lblStep.Location = new System.Drawing.Point(317, 36);
             this.lblStep.Name = "lblStep";
@@ -256,7 +255,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(8, 197);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(140, 13);
+            this.label7.Size = new System.Drawing.Size(138, 13);
             this.label7.TabIndex = 16;
             this.label7.Text = "Задержка между этапами";
             // 
@@ -275,7 +274,7 @@
             0,
             0});
             this.numDelay.Name = "numDelay";
-            this.numDelay.Size = new System.Drawing.Size(120, 20);
+            this.numDelay.Size = new System.Drawing.Size(120, 21);
             this.numDelay.TabIndex = 15;
             this.numDelay.Value = new decimal(new int[] {
             500,
@@ -291,7 +290,7 @@
             this.radGenPercent.Location = new System.Drawing.Point(11, 169);
             this.radGenPercent.Margin = new System.Windows.Forms.Padding(2);
             this.radGenPercent.Name = "radGenPercent";
-            this.radGenPercent.Size = new System.Drawing.Size(118, 17);
+            this.radGenPercent.Size = new System.Drawing.Size(117, 17);
             this.radGenPercent.TabIndex = 17;
             this.radGenPercent.TabStop = true;
             this.radGenPercent.Text = "% особей с геном ";
@@ -305,7 +304,7 @@
             this.radGenCount.Location = new System.Drawing.Point(197, 169);
             this.radGenCount.Margin = new System.Windows.Forms.Padding(2);
             this.radGenCount.Name = "radGenCount";
-            this.radGenCount.Size = new System.Drawing.Size(144, 17);
+            this.radGenCount.Size = new System.Drawing.Size(141, 17);
             this.radGenCount.TabIndex = 18;
             this.radGenCount.Text = "Кол-во особей с геном ";
             this.radGenCount.UseVisualStyleBackColor = true;
@@ -326,7 +325,7 @@
             0,
             0});
             this.numBeautyCount.Name = "numBeautyCount";
-            this.numBeautyCount.Size = new System.Drawing.Size(91, 20);
+            this.numBeautyCount.Size = new System.Drawing.Size(91, 21);
             this.numBeautyCount.TabIndex = 19;
             this.numBeautyCount.Value = new decimal(new int[] {
             1,
@@ -336,7 +335,8 @@
             // 
             // btnStart
             // 
-            this.btnStart.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStart.Location = new System.Drawing.Point(11, 396);
             this.btnStart.Margin = new System.Windows.Forms.Padding(2);
             this.btnStart.Name = "btnStart";
@@ -351,10 +351,10 @@
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(10, 248);
+            this.textBox1.Location = new System.Drawing.Point(10, 221);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(421, 143);
+            this.textBox1.Size = new System.Drawing.Size(421, 170);
             this.textBox1.TabIndex = 20;
             // 
             // Form1
@@ -362,7 +362,7 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(443, 436);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.numBeautyCount);
@@ -384,7 +384,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.genBeauty);
             this.Controls.Add(this.btnStart);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(459, 750);

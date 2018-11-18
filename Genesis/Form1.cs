@@ -18,8 +18,6 @@ namespace Genesis
         {
 
         }
-        //TODO: Добавить ТекстБокс и сделать привязку кнопки и его к форме +++
-        //TODO: Сделать окно расширяемым вниз FormBorderStyle и Size, Min...Size, Max...Size +++
 
         
         //Вот сюда можно вынести count <===
