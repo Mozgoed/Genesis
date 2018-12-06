@@ -71,8 +71,8 @@ namespace Genesis
         private void btnStart_Click(object sender, EventArgs e)
         {
             txtLog.Text += "\r\nПривет!";
-
-            if (btnStart.Text == "Остановить")
+            
+            if(btnStart.Text == "Остановить")
             {
                 btnStart.Text = "Остановка эмуляции...";
                 Application.DoEvents();
@@ -82,9 +82,9 @@ namespace Genesis
 
             btnStart.Text = "Остановить";
             //Блокировка кнопок
-            numPopulationSizeM.Enabled = numPopulationSurvival.Enabled = numPopulationBonusSurvival.Enabled = numChildrenNumber.Enabled = numBeautyPercentM.Enabled = numBeautyCountM.Enabled = numPopulationSizeF.Enabled = num1ParentChance.Enabled = num2ParentsChance.Enabled = numBeautyPercentF.Enabled = numBeautyCountF.Enabled = false;
+            numPopulationSizeM.Enabled = numPopulationSurvival.Enabled = numPopulationBonusSurvival.Enabled = numChildrenNumber.Enabled = numBeautyPercentM.Enabled = numBeautyCountM.Enabled = false;
 
-            int populationSize = (int)numPopulationSizeM.Value + (int)numPopulationSizeF.Value;
+            int populationSize = (int)numPopulationSizeM.Value+(int)numPopulationSizeF.Value;
             int populationSizeM = (int)numPopulationSizeM.Value;
             int populationSizeF = (int)numPopulationSizeF.Value;
             //Заполнил коллекцию птицами 
@@ -98,14 +98,14 @@ namespace Genesis
             }
             countBirds();
             //Нашел процент самцов с геном от общего кол-ва самцов 
-            decimal BeautyPercentM;
+            decimal BeautyPercentM ;
             if (radGenPercent.Checked == true)
             {
                 BeautyPercentM = numBeautyPercentM.Value / 100;
             }
             else
             {
-                BeautyPercentM = numBeautyCountM.Value / populationSizeM;
+                BeautyPercentM = numBeautyCountM.Value / populationSizeM; 
             }
             //нашел процент самок с геном от общего кол-ва самок
             decimal BeautyPercentF;
@@ -117,26 +117,15 @@ namespace Genesis
             {
                 BeautyPercentF = numBeautyCountF.Value / populationSizeF;
             }
-            //Заполнение кллекци птицами с геном 
-            int MaleGenBirds = (int)(BeautyPercentM * populationSizeM);
-            int FemaleGenBirds = (int)(BeautyPercentF * populationSizeF);
-            int m=0; int f = 0;
-            while (m < MaleGenBirds)
-            {
+            //Заполнение коллекции птицами с геном (не работают Х и У)
+            int x = (int)(BeautyPercentM * populationSizeM);
+            int y = (int)(BeautyPercentF * populationSizeF);
+            while (x!=0 && y!=0)
                 for (int i = 0; i < populationSize; i++)
                 {
-                    if (population[i] == 0) { population[i] = 1; m++; }
-                    if (m == MaleGenBirds) break;
+                    if (population[i] == 0) { population[i] = 1; x--; }
+                    if (population[i] == 2) { population[i] = 3; y--; }
                 }
-            }
-            while (f < FemaleGenBirds)
-            {
-                for (int i = 0; i < populationSize; i++)
-                {
-                    if (population[i] == 2) { population[i] = 3; f++; }
-                    if (f == MaleGenBirds) break;
-                }
-            }
             countBirds();
             
 
@@ -147,7 +136,7 @@ namespace Genesis
                 {
                     btnStart.Text = "Пуск эмуляции";
                     stop = false;
-                    numPopulationSizeM.Enabled = numPopulationSurvival.Enabled = numPopulationBonusSurvival.Enabled = numChildrenNumber.Enabled = numBeautyPercentM.Enabled = numBeautyCountM.Enabled = numPopulationSizeF.Enabled = num1ParentChance.Enabled = num2ParentsChance.Enabled = numBeautyPercentF.Enabled = numBeautyCountF.Enabled = true;
+                    numPopulationSizeM.Enabled = numPopulationSurvival.Enabled = numPopulationBonusSurvival.Enabled = numChildrenNumber.Enabled = numBeautyPercentM.Enabled = numBeautyCountM.Enabled = true;
                     return;
                 }
 
@@ -240,9 +229,9 @@ namespace Genesis
             MessageBox.Show("Эмуляция завершена");
 
             btnStart.Text = "Пуск эмуляции";
-            numPopulationSizeM.Enabled = numPopulationSurvival.Enabled = numPopulationBonusSurvival.Enabled = numChildrenNumber.Enabled = numBeautyPercentM.Enabled = numBeautyCountM.Enabled = numPopulationSizeF.Enabled = num1ParentChance.Enabled = num2ParentsChance.Enabled = numBeautyPercentF.Enabled = numBeautyCountF.Enabled = true;
-
-
+            numPopulationSizeM.Enabled = numPopulationSurvival.Enabled = numPopulationBonusSurvival.Enabled = numChildrenNumber.Enabled = numBeautyPercentM.Enabled = numBeautyCountM.Enabled = true;
+   
+       
         }
          
          void num_Scroll(object sender, ScrollEventArgs e)
