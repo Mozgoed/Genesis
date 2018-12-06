@@ -3,14 +3,13 @@
     partial class About
     {
         /// <summary>
-        /// Required designer variable.
+        /// Обязательная переменная конструктора.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Освободить все используемые ресурсы.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,229 +19,172 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Код, автоматически созданный конструктором форм Windows
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// Требуемый метод для поддержки конструктора — не изменяйте 
+        /// содержимое этого метода с помощью редактора кода.
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtTasks = new System.Windows.Forms.TextBox();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDeleteX = new System.Windows.Forms.Button();
-            this.btnOrder = new System.Windows.Forms.Button();
-            this.btnSort = new System.Windows.Forms.Button();
-            this.btnDeleteAll = new System.Windows.Forms.Button();
-            this.btnAddX = new System.Windows.Forms.Button();
-            this.btnReversSort = new System.Windows.Forms.Button();
-            this.btnSwap = new System.Windows.Forms.Button();
-            this.txtAdd = new System.Windows.Forms.TextBox();
-            this.txtAddX = new System.Windows.Forms.TextBox();
-            this.numX = new System.Windows.Forms.NumericUpDown();
-            this.numDelete = new System.Windows.Forms.NumericUpDown();
-            this.numB = new System.Windows.Forms.NumericUpDown();
-            this.numA = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numDelete)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numA)).BeginInit();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
+            this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.logoPictureBox = new System.Windows.Forms.PictureBox();
+            this.labelProductName = new System.Windows.Forms.Label();
+            this.labelVersion = new System.Windows.Forms.Label();
+            this.labelCopyright = new System.Windows.Forms.Label();
+            this.labelCompanyName = new System.Windows.Forms.Label();
+            this.textBoxDescription = new System.Windows.Forms.TextBox();
+            this.okButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtTasks
+            // tableLayoutPanel
             // 
-            this.txtTasks.Location = new System.Drawing.Point(8, 8);
-            this.txtTasks.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTasks.Multiline = true;
-            this.txtTasks.Name = "txtTasks";
-            this.txtTasks.Size = new System.Drawing.Size(343, 127);
-            this.txtTasks.TabIndex = 0;
+            this.tableLayoutPanel.ColumnCount = 2;
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67F));
+            this.tableLayoutPanel.Controls.Add(this.logoPictureBox, 0, 0);
+            this.tableLayoutPanel.Controls.Add(this.labelProductName, 1, 0);
+            this.tableLayoutPanel.Controls.Add(this.labelVersion, 1, 1);
+            this.tableLayoutPanel.Controls.Add(this.labelCopyright, 1, 2);
+            this.tableLayoutPanel.Controls.Add(this.labelCompanyName, 1, 3);
+            this.tableLayoutPanel.Controls.Add(this.textBoxDescription, 1, 4);
+            this.tableLayoutPanel.Controls.Add(this.okButton, 1, 5);
+            this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel.Location = new System.Drawing.Point(14, 14);
+            this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tableLayoutPanel.Name = "tableLayoutPanel";
+            this.tableLayoutPanel.RowCount = 6;
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel.Size = new System.Drawing.Size(624, 407);
+            this.tableLayoutPanel.TabIndex = 0;
             // 
-            // btnRefresh
+            // logoPictureBox
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(354, 8);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(64, 29);
-            this.btnRefresh.TabIndex = 1;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.Image")));
+            this.logoPictureBox.Location = new System.Drawing.Point(4, 5);
+            this.logoPictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.logoPictureBox.Name = "logoPictureBox";
+            this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 6);
+            this.logoPictureBox.Size = new System.Drawing.Size(197, 397);
+            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.logoPictureBox.TabIndex = 12;
+            this.logoPictureBox.TabStop = false;
             // 
-            // btnAdd
+            // labelProductName
             // 
-            this.btnAdd.Location = new System.Drawing.Point(8, 140);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(108, 34);
-            this.btnAdd.TabIndex = 11;
-            this.btnAdd.Text = "Добавить новый элемент";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.labelProductName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelProductName.Location = new System.Drawing.Point(214, 0);
+            this.labelProductName.Margin = new System.Windows.Forms.Padding(9, 0, 4, 0);
+            this.labelProductName.MaximumSize = new System.Drawing.Size(0, 26);
+            this.labelProductName.Name = "labelProductName";
+            this.labelProductName.Size = new System.Drawing.Size(406, 26);
+            this.labelProductName.TabIndex = 19;
+            this.labelProductName.Text = "Название продукта";
+            this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnDeleteX
+            // labelVersion
             // 
-            this.btnDeleteX.Location = new System.Drawing.Point(8, 180);
-            this.btnDeleteX.Name = "btnDeleteX";
-            this.btnDeleteX.Size = new System.Drawing.Size(108, 34);
-            this.btnDeleteX.TabIndex = 12;
-            this.btnDeleteX.Text = "Удалить элемент Х";
-            this.btnDeleteX.UseVisualStyleBackColor = true;
-            this.btnDeleteX.Click += new System.EventHandler(this.btnDeleteX_Click);
+            this.labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelVersion.Location = new System.Drawing.Point(214, 40);
+            this.labelVersion.Margin = new System.Windows.Forms.Padding(9, 0, 4, 0);
+            this.labelVersion.MaximumSize = new System.Drawing.Size(0, 26);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.Size = new System.Drawing.Size(406, 26);
+            this.labelVersion.TabIndex = 0;
+            this.labelVersion.Text = "Версия";
+            this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnOrder
+            // labelCopyright
             // 
-            this.btnOrder.Location = new System.Drawing.Point(218, 314);
-            this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(110, 68);
-            this.btnOrder.TabIndex = 13;
-            this.btnOrder.Text = "Поменять порядок на обратный ";
-            this.btnOrder.UseVisualStyleBackColor = true;
-            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
+            this.labelCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelCopyright.Location = new System.Drawing.Point(214, 80);
+            this.labelCopyright.Margin = new System.Windows.Forms.Padding(9, 0, 4, 0);
+            this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 26);
+            this.labelCopyright.Name = "labelCopyright";
+            this.labelCopyright.Size = new System.Drawing.Size(406, 26);
+            this.labelCopyright.TabIndex = 21;
+            this.labelCopyright.Text = "Авторские права";
+            this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnSort
+            // labelCompanyName
             // 
-            this.btnSort.Location = new System.Drawing.Point(8, 315);
-            this.btnSort.Name = "btnSort";
-            this.btnSort.Size = new System.Drawing.Size(94, 67);
-            this.btnSort.TabIndex = 14;
-            this.btnSort.Text = "Отсортировать ";
-            this.btnSort.UseVisualStyleBackColor = true;
-            this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
+            this.labelCompanyName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelCompanyName.Location = new System.Drawing.Point(214, 120);
+            this.labelCompanyName.Margin = new System.Windows.Forms.Padding(9, 0, 4, 0);
+            this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 26);
+            this.labelCompanyName.Name = "labelCompanyName";
+            this.labelCompanyName.Size = new System.Drawing.Size(406, 26);
+            this.labelCompanyName.TabIndex = 22;
+            this.labelCompanyName.Text = "Название организации";
+            this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnDeleteAll
+            // textBoxDescription
             // 
-            this.btnDeleteAll.Location = new System.Drawing.Point(334, 314);
-            this.btnDeleteAll.Name = "btnDeleteAll";
-            this.btnDeleteAll.Size = new System.Drawing.Size(80, 67);
-            this.btnDeleteAll.TabIndex = 15;
-            this.btnDeleteAll.Text = "Удалить всё ";
-            this.btnDeleteAll.UseVisualStyleBackColor = true;
-            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
+            this.textBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxDescription.Location = new System.Drawing.Point(214, 165);
+            this.textBoxDescription.Margin = new System.Windows.Forms.Padding(9, 5, 4, 5);
+            this.textBoxDescription.Multiline = true;
+            this.textBoxDescription.Name = "textBoxDescription";
+            this.textBoxDescription.ReadOnly = true;
+            this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxDescription.Size = new System.Drawing.Size(406, 193);
+            this.textBoxDescription.TabIndex = 23;
+            this.textBoxDescription.TabStop = false;
+            this.textBoxDescription.Text = "Описание";
             // 
-            // btnAddX
+            // okButton
             // 
-            this.btnAddX.Location = new System.Drawing.Point(8, 220);
-            this.btnAddX.Name = "btnAddX";
-            this.btnAddX.Size = new System.Drawing.Size(108, 34);
-            this.btnAddX.TabIndex = 16;
-            this.btnAddX.Text = "Вставить элемент на место Х";
-            this.btnAddX.UseVisualStyleBackColor = true;
-            this.btnAddX.Click += new System.EventHandler(this.btnAddX_Click);
+            this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.okButton.Location = new System.Drawing.Point(508, 368);
+            this.okButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(112, 34);
+            this.okButton.TabIndex = 24;
+            this.okButton.Text = "&ОК";
             // 
-            // btnReversSort
+            // AboutBox1
             // 
-            this.btnReversSort.Location = new System.Drawing.Point(108, 315);
-            this.btnReversSort.Name = "btnReversSort";
-            this.btnReversSort.Size = new System.Drawing.Size(104, 67);
-            this.btnReversSort.TabIndex = 17;
-            this.btnReversSort.Text = "Отсортировать наоборот ";
-            this.btnReversSort.UseVisualStyleBackColor = true;
-            this.btnReversSort.Click += new System.EventHandler(this.btnReversSort_Click);
-            // 
-            // btnSwap
-            // 
-            this.btnSwap.Location = new System.Drawing.Point(8, 260);
-            this.btnSwap.Name = "btnSwap";
-            this.btnSwap.Size = new System.Drawing.Size(108, 48);
-            this.btnSwap.TabIndex = 18;
-            this.btnSwap.Text = "Поменять элементы местами ";
-            this.btnSwap.UseVisualStyleBackColor = true;
-            this.btnSwap.Click += new System.EventHandler(this.btnSwap_Click);
-            // 
-            // txtAdd
-            // 
-            this.txtAdd.Location = new System.Drawing.Point(122, 148);
-            this.txtAdd.Name = "txtAdd";
-            this.txtAdd.Size = new System.Drawing.Size(296, 20);
-            this.txtAdd.TabIndex = 19;
-            // 
-            // txtAddX
-            // 
-            this.txtAddX.Location = new System.Drawing.Point(122, 224);
-            this.txtAddX.Name = "txtAddX";
-            this.txtAddX.Size = new System.Drawing.Size(226, 20);
-            this.txtAddX.TabIndex = 21;
-            // 
-            // numX
-            // 
-            this.numX.Location = new System.Drawing.Point(354, 224);
-            this.numX.Name = "numX";
-            this.numX.Size = new System.Drawing.Size(60, 20);
-            this.numX.TabIndex = 23;
-            // 
-            // numDelete
-            // 
-            this.numDelete.Location = new System.Drawing.Point(122, 189);
-            this.numDelete.Name = "numDelete";
-            this.numDelete.Size = new System.Drawing.Size(60, 20);
-            this.numDelete.TabIndex = 24;
-            // 
-            // numB
-            // 
-            this.numB.Location = new System.Drawing.Point(193, 276);
-            this.numB.Name = "numB";
-            this.numB.Size = new System.Drawing.Size(60, 20);
-            this.numB.TabIndex = 25;
-            // 
-            // numA
-            // 
-            this.numA.Location = new System.Drawing.Point(122, 276);
-            this.numA.Name = "numA";
-            this.numA.Size = new System.Drawing.Size(60, 20);
-            this.numA.TabIndex = 26;
-            // 
-            // About
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AcceptButton = this.okButton;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 389);
-            this.Controls.Add(this.numA);
-            this.Controls.Add(this.numB);
-            this.Controls.Add(this.numDelete);
-            this.Controls.Add(this.numX);
-            this.Controls.Add(this.txtAddX);
-            this.Controls.Add(this.txtAdd);
-            this.Controls.Add(this.btnSwap);
-            this.Controls.Add(this.btnReversSort);
-            this.Controls.Add(this.btnAddX);
-            this.Controls.Add(this.btnDeleteAll);
-            this.Controls.Add(this.btnSort);
-            this.Controls.Add(this.btnOrder);
-            this.Controls.Add(this.btnDeleteX);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnRefresh);
-            this.Controls.Add(this.txtTasks);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "About";
-            this.Text = "About";
-            ((System.ComponentModel.ISupportInitialize)(this.numX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numDelete)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numA)).EndInit();
+            this.ClientSize = new System.Drawing.Size(652, 435);
+            this.Controls.Add(this.tableLayoutPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "AboutBox1";
+            this.Padding = new System.Windows.Forms.Padding(14, 14, 14, 14);
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "AboutBox1";
+            this.tableLayoutPanel.ResumeLayout(false);
+            this.tableLayoutPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtTasks;
-        private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnDeleteX;
-        private System.Windows.Forms.Button btnOrder;
-        private System.Windows.Forms.Button btnSort;
-        private System.Windows.Forms.Button btnDeleteAll;
-        private System.Windows.Forms.Button btnAddX;
-        private System.Windows.Forms.Button btnReversSort;
-        private System.Windows.Forms.Button btnSwap;
-        private System.Windows.Forms.TextBox txtAdd;
-        private System.Windows.Forms.TextBox txtAddX;
-        private System.Windows.Forms.NumericUpDown numX;
-        private System.Windows.Forms.NumericUpDown numDelete;
-        private System.Windows.Forms.NumericUpDown numB;
-        private System.Windows.Forms.NumericUpDown numA;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
+        private System.Windows.Forms.PictureBox logoPictureBox;
+        private System.Windows.Forms.Label labelProductName;
+        private System.Windows.Forms.Label labelVersion;
+        private System.Windows.Forms.Label labelCopyright;
+        private System.Windows.Forms.Label labelCompanyName;
+        private System.Windows.Forms.TextBox textBoxDescription;
+        private System.Windows.Forms.Button okButton;
     }
 }
