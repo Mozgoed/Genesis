@@ -16,3 +16,13 @@ C:\Users\Мозгоед\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.cspro
 C:\Users\Мозгоед\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.csproj.CoreCompileInputs.cache
 C:\Users\Мозгоед\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.exe
 C:\Users\Мозгоед\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.pdb
+C:\Users\mozgoed123\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.csprojAssemblyReference.cache
+C:\Users\mozgoed123\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.Form1.resources
+C:\Users\mozgoed123\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.Properties.Resources.resources
+C:\Users\mozgoed123\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.csproj.GenerateResource.cache
+C:\Users\mozgoed123\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.csproj.CoreCompileInputs.cache
+C:\Users\mozgoed123\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.exe
+C:\Users\mozgoed123\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.pdb
+C:\Users\mozgoed123\Documents\GitHub\Genesis\Genesis\bin\Debug\Genesis.exe
+C:\Users\mozgoed123\Documents\GitHub\Genesis\Genesis\bin\Debug\Genesis.pdb
+C:\Users\mozgoed123\Documents\GitHub\Genesis\Genesis\obj\Debug\Genesis.About.resources
