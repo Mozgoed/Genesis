@@ -16,7 +16,22 @@ namespace Genesis
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            /////////////Тренировка работы с объектами класса (сам класс написан в самом низу файла)
+            //TODO: Переделать коллекцию на работу с птицами
+            Bird bird = new Bird(); //Создание объекта bird по чертежам класса Bird
+            bird.gen = true; //Указываем наличие гена у птицы
+            bird.sex = Bird.Sex.male; //Указываем пол птицы
 
+            //Как добавить в коллекцию птицу
+            List<Bird> birds = new List<Bird>();//Допустим у нас уже есть коллекция для птиц birds и создана птица bird
+            birds.Add(bird); //Добавление птицы bird в коллекцию birds
+
+            //Обращение к какой-то птице в коллекции
+            if(birds[0].gen == true && birds[0].sex == Bird.Sex.male) //Если птица с индексом 0 - с геном и мужского пола
+            {
+                MessageBox.Show("Это гордый птыц, самэц. Птица с геном гордости!");
+            }
+            /////////////Конец тренировки
         }
         /*
         0-самец без гена 
@@ -35,6 +50,8 @@ namespace Genesis
         /// </summary>
         void countBirds()
         {
+            count = 0; // Перед подсчётом - количество птиц надо обнулить
+            //countMG = countFG = countM = countF = 0; //TODO: при обнулении тут - программа ломается (деление где-то там на 0)
             for (int bird = 0; bird < population.Count; bird++)
             {
                 if (population[bird] == 1 || population[bird] == 3 ) count++; // посчитать птиц с геном 
@@ -52,7 +69,7 @@ namespace Genesis
                 else { genBeauty.Value = genBeauty.Maximum; }
             }
             lblBeautyPercent.Text = genBeauty.Value.ToString() + "%";  
-            lblGenCount.Text = count.ToString();
+            lblGenCount.Text = count.ToString() + " / " + (count+countM+countF).ToString();
             //TODO: ДОбавить setState в местах, где необходима цветовая индикация
             TaskbarProgress.SetValue( System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle, count, (int)numPopulationSizeM.Value);
             TaskbarProgress.SetState(System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle, TaskbarProgress.TaskbarStates.Normal);
@@ -70,8 +87,6 @@ namespace Genesis
         //Чтобы увидеть все задачи TODO нажми: меню "Вид" > "Список задач"
         private void btnStart_Click(object sender, EventArgs e)
         {
-            txtLog.Text += "\r\nПривет!";
-
             if (btnStart.Text == "Остановить")
             {
                 btnStart.Text = "Остановка эмуляции...";
@@ -87,6 +102,8 @@ namespace Genesis
             int populationSize = (int)numPopulationSizeM.Value + (int)numPopulationSizeF.Value;
             int populationSizeM = (int)numPopulationSizeM.Value;
             int populationSizeF = (int)numPopulationSizeF.Value;
+            //TODO: Перед заполнением коллекцию надо очистить
+            
             //Заполнил коллекцию птицами 
             for (int i = 0; i < populationSizeM; i++)
             {
@@ -117,7 +134,7 @@ namespace Genesis
             {
                 BeautyPercentF = numBeautyCountF.Value / populationSizeF;
             }
-            //Заполнение кллекци птицами с геном 
+            //Заполнение коллекци птицами с геном 
             int MaleGenBirds = (int)(BeautyPercentM * populationSizeM);
             int FemaleGenBirds = (int)(BeautyPercentF * populationSizeF);
             int m=0; int f = 0;
@@ -138,7 +155,6 @@ namespace Genesis
                 }
             }
             countBirds();
-            
 
             uint step = 0;
             while (count < populationSize && count > 0)
@@ -215,7 +231,7 @@ namespace Genesis
 
 
 
-                        //Вымирание2.0
+                //Вымирание2.0
                 Random rnd = new Random();
                 while (population.Count > populationSize)
                 {
@@ -224,8 +240,8 @@ namespace Genesis
                         int percent = rnd.Next(0, 100);
                         if (population[i] == 1 || population[i] == 3 && percent > numPopulationSurvival.Value + numPopulationBonusSurvival.Value)
                             population.RemoveAt(i);
-                        if (i == population.Count) break;
-                        if (population.Count == populationSize) break;
+                        if (i >= population.Count) break;
+                        if (population.Count <= populationSize) break;
                         if (population[i] == 0 || population[i] == 2 && percent > numPopulationSurvival.Value)
                             population.RemoveAt(i);
                     }
@@ -288,6 +304,21 @@ namespace Genesis
         private void btnRestart_Click(object sender, EventArgs e)
         {
             Application.Restart();
+        }
+    }
+
+    /// <summary>
+    /// Класс птицы с геном и полом
+    /// </summary>
+    class Bird
+    {
+        public bool gen; // true - ген есть
+        public Sex sex; // пол птицы
+
+        public enum Sex : byte // перечисление полов птицы
+        {
+            male, // мужской
+            female // женский
         }
     }
 }
