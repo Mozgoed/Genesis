@@ -31,7 +31,7 @@ namespace Genesis
         /// <summary>
         /// Метод подсчитывает количество особей в популяции с геном красоты и выводит на экран
         /// </summary>
-        void countBirds(uint step, bool parallel)
+        void countBirds(int step, bool parallel)
         {
             count = 0;
             if (parallel)
@@ -71,7 +71,7 @@ namespace Genesis
         bool stop = false;
         private void btnStart_Click(object sender, EventArgs e)
         {
-            if(btnStart.Text == "Остановить")
+            if (btnStart.Text == "Остановить")
             {
                 TaskbarProgress.SetState(System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle, TaskbarProgress.TaskbarStates.Error);
                 btnStart.Text = "Остановка эмуляции...";
@@ -94,28 +94,27 @@ namespace Genesis
             {
                 BeautyPercent = numBeautyCount.Value / (uint)numPopulationSize.Value;
             }
-            bool result = Emulation( (uint)numPopulationSize.Value , BeautyPercent, (int)numChildrenNumber.Value, (byte)numPopulationSurvival.Value, (byte)numPopulationBonusSurvival.Value);
+            int result = Emulation((uint)numPopulationSize.Value, BeautyPercent, (int)numChildrenNumber.Value, (byte)numPopulationSurvival.Value, (byte)numPopulationBonusSurvival.Value);
 
             TaskbarProgress.SetState(System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle, TaskbarProgress.TaskbarStates.Indeterminate);
-            if(result)
+            if (result > 0)
                 txtLog.Text += "\r\nРезультат: Ген победил. ";
-            else
+            if (result < 0)
                 txtLog.Text += "\r\nРезультат: Ген проиграл. ";
-            lblStep.Text = "Поколение: " + step;
-            txtLog.Text += lblStep.Text;
-            
+            txtLog.Text += "Поколение: " + step;
+
             MessageBox.Show("Эмуляция завершена");
             TaskbarProgress.SetState(System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle, TaskbarProgress.TaskbarStates.NoProgress);
 
             LockControls(false);
         }
 
-        uint step = 0;
+        int step = 0;
         bool[] population;
-        private bool Emulation(uint populationSize, decimal beautyPercent, int childrenNumber, byte populationSurvival, byte populationBonus)
+        private int Emulation(uint populationSize, decimal beautyPercent, int childrenNumber, byte populationSurvival, byte populationBonus)
         {
             population = new bool[populationSize];
-            
+
 
             for (int bird = 0; bird < populationSize * beautyPercent; bird++)
             {
@@ -131,7 +130,7 @@ namespace Genesis
                     btnStart.Text = "Пуск эмуляции";
                     TaskbarProgress.SetState(System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle, TaskbarProgress.TaskbarStates.Normal);
                     stop = false;
-                    return false;
+                    return 0;
                 }
 
                 //Размножение
@@ -175,13 +174,13 @@ namespace Genesis
                     if (byteGeneration[child] == 0) { population[count++] = false; }
                     if (byteGeneration[child] == 1) { population[count++] = true; }
                 }
-                
+
                 countBirds(++step, true);
 
                 if (delay) System.Threading.Thread.Sleep((int)numDelay.Value);
             }
-            if (count == 0) return false;
-            else return true;
+            if (count == 0) return -1 * step;
+            else return step;
         }
 
         void LockControls(bool isLocked)
@@ -212,12 +211,12 @@ namespace Genesis
         {
             NumericUpDown num = (NumericUpDown)sender;
             int N = e.NewValue - e.OldValue;
-            num.Value = num.Value + N*50;
+            num.Value = num.Value + N * 50;
         }
 
         private void radGenPercent_CheckedChanged(object sender, EventArgs e)
         {
-            if ( radGenPercent.Checked)
+            if (radGenPercent.Checked)
             {
                 radGenCount.Checked = false;
                 numBeautyPercent.Enabled = true;
@@ -227,7 +226,7 @@ namespace Genesis
             else
             {
                 radGenCount.Checked = true;
-                numBeautyPercent.Enabled = false ;
+                numBeautyPercent.Enabled = false;
                 numBeautyCount.Enabled = true;
                 count = (uint)(numBeautyCount.Value);
             }
@@ -245,8 +244,8 @@ namespace Genesis
             }
             else
             {
-                if (numBeautyCount.Value >= numPopulationSize.Value) numBeautyCount.Value = numPopulationSize.Value-1;
-                
+                if (numBeautyCount.Value >= numPopulationSize.Value) numBeautyCount.Value = numPopulationSize.Value - 1;
+
                 count = (uint)(numBeautyCount.Value);
             }
             lblCount.Text = "Особей: " + count + " / " + numPopulationSize.Value;
@@ -261,27 +260,23 @@ namespace Genesis
             txtLog.Text += "Пакетная эмуляция";
             txtLog.Text += string.Format("\r\nБаза = {0}, Бонус = {1}, Потомки = {2}", numPopulationSurvival.Value, numPopulationBonusSurvival.Value, numChildrenNumber.Value);
             Application.DoEvents();
-            for (int i=1; i<1000; i++)
+            for (int turn = 0; turn < 1000; turn++)
             {
-                int c = 0;
-                for (int turn = 0; turn < 100; turn++)
+                decimal BeautyPercent;
+                if (radGenPercent.Checked)
                 {
-                    decimal BeautyPercent;
-                    if (radGenPercent.Checked)
-                    {
-                        BeautyPercent = numBeautyPercent.Value / 100;
-                    }
-                    else
-                    {
-                        BeautyPercent = numBeautyCount.Value / (uint)numPopulationSize.Value;
-                    }
-                    bool result = Emulation((uint)numPopulationSize.Value, BeautyPercent, (int)numChildrenNumber.Value, (byte)numPopulationSurvival.Value, (byte)numPopulationBonusSurvival.Value);
-                    if (result) c++;
-                    Application.DoEvents();
+                    BeautyPercent = numBeautyPercent.Value / 100;
                 }
-                txtLog.Text += "\r\n" + i + "=" + c /*(Math.Round(c / 100.0 * 100, 1))*/;
+                else
+                {
+                    BeautyPercent = numBeautyCount.Value / (uint)numPopulationSize.Value;
+                }
+                int result = Emulation((uint)numPopulationSize.Value, BeautyPercent, (int)numChildrenNumber.Value, (byte)numPopulationSurvival.Value, (byte)numPopulationBonusSurvival.Value);
+                txtLog.Text += "\r\n" + result;
+                TaskbarProgress.SetValue(System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle, turn, 1000);
                 Application.DoEvents();
             }
+            Application.DoEvents();
             LockControls(false);
         }
 
