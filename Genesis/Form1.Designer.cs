@@ -160,6 +160,12 @@
             // 
             // numPopulationBonusSurvival
             // 
+            this.numPopulationBonusSurvival.DecimalPlaces = 2;
+            this.numPopulationBonusSurvival.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             this.numPopulationBonusSurvival.Location = new System.Drawing.Point(151, 116);
             this.numPopulationBonusSurvival.Minimum = new decimal(new int[] {
             100,
@@ -173,7 +179,7 @@
             1,
             0,
             0,
-            0});
+            65536});
             this.numPopulationBonusSurvival.Scroll += new System.Windows.Forms.ScrollEventHandler(this.num_Scroll);
             // 
             // label3
@@ -237,7 +243,7 @@
             1,
             0,
             0,
-            0});
+            131072});
             this.numBeautyPercent.ValueChanged += new System.EventHandler(this.num_ValueChanged);
             // 
             // label5

@@ -260,23 +260,54 @@ namespace Genesis
             txtLog.Text += "Пакетная эмуляция";
             txtLog.Text += string.Format("\r\nБаза = {0}, Бонус = {1}, Потомки = {2}", numPopulationSurvival.Value, numPopulationBonusSurvival.Value, numChildrenNumber.Value);
             Application.DoEvents();
-            for (int turn = 0; turn < 1000; turn++)
+            int winCount = 0;
+            double winAverageSteps = 0;
+            double failAverageSteps = 0;
+            for (double percent = 0.01; percent <= 1; percent+=0.01)
             {
-                decimal BeautyPercent;
-                if (radGenPercent.Checked)
+                numBeautyPercent.Value = (decimal)percent;
+                for (double bonus = 0.1; bonus <= 2; bonus += 0.1)
                 {
-                    BeautyPercent = numBeautyPercent.Value / 100;
+                    numPopulationBonusSurvival.Value = (decimal)bonus;
+                    for (int turn = 0; turn < 1000; turn++)
+                    {
+                        decimal BeautyPercent;
+                        if (radGenPercent.Checked)
+                        {
+                            BeautyPercent = numBeautyPercent.Value / 100;
+                        }
+                        else
+                        {
+                            BeautyPercent = numBeautyCount.Value / (uint)numPopulationSize.Value;
+                        }
+                        int result = Emulation((uint)numPopulationSize.Value, BeautyPercent, (int)numChildrenNumber.Value, (byte)numPopulationSurvival.Value, (byte)numPopulationBonusSurvival.Value);
+                        //txtLog.Text += "\r\n" + result;
+                        if (result > 0)
+                        {
+                            winCount++;
+                            winAverageSteps += result;
+                        }
+                        if (result < 0)
+                        {
+                            failAverageSteps += result;
+                        }
+                        TaskbarProgress.SetValue(System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle, turn, 1000);
+                        Application.DoEvents();
+                    }
+                    string text = numPopulationSize.Value.ToString() + ";";
+                    decimal BeautyPercenT = radGenPercent.Checked ? numBeautyPercent.Value / 100 : numBeautyCount.Value / (uint)numPopulationSize.Value;
+                    text += BeautyPercenT.ToString() + ";" + numChildrenNumber.Value + ";" + numPopulationSurvival.Value + ";" + numPopulationBonusSurvival.Value + ";";
+                    text += (winCount / 10.0).ToString("F1") + ";";
+                    if (winCount == 0) text += "0;";
+                    else text += (winAverageSteps / (double)winCount).ToString("F0") + ";";
+                    if (winCount == 1000) text += "0;";
+                    else text += (failAverageSteps / (double)(1000 - winCount)).ToString("F0") + ";";
+                    System.IO.File.AppendAllText("results.txt", text + "\r\n");
+
+
+                    Application.DoEvents();
                 }
-                else
-                {
-                    BeautyPercent = numBeautyCount.Value / (uint)numPopulationSize.Value;
-                }
-                int result = Emulation((uint)numPopulationSize.Value, BeautyPercent, (int)numChildrenNumber.Value, (byte)numPopulationSurvival.Value, (byte)numPopulationBonusSurvival.Value);
-                txtLog.Text += "\r\n" + result;
-                TaskbarProgress.SetValue(System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle, turn, 1000);
-                Application.DoEvents();
             }
-            Application.DoEvents();
             LockControls(false);
         }
 
