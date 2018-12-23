@@ -263,10 +263,10 @@ namespace Genesis
             int winCount = 0;
             double winAverageSteps = 0;
             double failAverageSteps = 0;
-            for (double percent = 0.01; percent <= 1; percent+=0.01)
+            for (double percent = 0.01; percent <= 0.1; percent+=0.01)
             {
                 numBeautyPercent.Value = (decimal)percent;
-                for (double bonus = 0.1; bonus <= 2; bonus += 0.1)
+                for (double bonus = 0.01; bonus <= 1; bonus += 0.01)
                 {
                     numPopulationBonusSurvival.Value = (decimal)bonus;
                     for (int turn = 0; turn < 1000; turn++)
