@@ -176,6 +176,7 @@ namespace Genesis
                 }
 
                 countBirds(++step, true);
+                if (step > 5000) return -5000;
 
                 if (delay) System.Threading.Thread.Sleep((int)numDelay.Value);
             }
@@ -263,10 +264,10 @@ namespace Genesis
             int winCount = 0;
             double winAverageSteps = 0;
             double failAverageSteps = 0;
-            for (double percent = 0.01; percent <= 0.1; percent+=0.01)
+            for (double percent = 0.1; percent >=0.01; percent-=0.01)
             {
                 numBeautyPercent.Value = (decimal)percent;
-                for (double bonus = 0.01; bonus <= 1; bonus += 0.01)
+                for (double bonus = 2; bonus >= 0.1; bonus -= 0.1)
                 {
                     numPopulationBonusSurvival.Value = (decimal)bonus;
                     for (int turn = 0; turn < 1000; turn++)
@@ -274,14 +275,13 @@ namespace Genesis
                         decimal BeautyPercent;
                         if (radGenPercent.Checked)
                         {
-                            BeautyPercent = numBeautyPercent.Value / 100;
+                            BeautyPercent = numBeautyPercent.Value / (decimal)100.0;
                         }
                         else
                         {
                             BeautyPercent = numBeautyCount.Value / (uint)numPopulationSize.Value;
                         }
                         int result = Emulation((uint)numPopulationSize.Value, BeautyPercent, (int)numChildrenNumber.Value, (byte)numPopulationSurvival.Value, (byte)numPopulationBonusSurvival.Value);
-                        //txtLog.Text += "\r\n" + result;
                         if (result > 0)
                         {
                             winCount++;
@@ -294,14 +294,14 @@ namespace Genesis
                         TaskbarProgress.SetValue(System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle, turn, 1000);
                         Application.DoEvents();
                     }
-                    string text = numPopulationSize.Value.ToString() + ";";
-                    decimal BeautyPercenT = radGenPercent.Checked ? numBeautyPercent.Value / 100 : numBeautyCount.Value / (uint)numPopulationSize.Value;
-                    text += BeautyPercenT.ToString() + ";" + numChildrenNumber.Value + ";" + numPopulationSurvival.Value + ";" + numPopulationBonusSurvival.Value + ";";
-                    text += (winCount / 10.0).ToString("F1") + ";";
-                    if (winCount == 0) text += "0;";
-                    else text += (winAverageSteps / (double)winCount).ToString("F0") + ";";
-                    if (winCount == 1000) text += "0;";
-                    else text += (failAverageSteps / (double)(1000 - winCount)).ToString("F0") + ";";
+                    string text = numPopulationSize.Value.ToString() + ";\t";
+                    decimal BeautyPercenT = radGenPercent.Checked ? numBeautyPercent.Value : numBeautyCount.Value / (uint)numPopulationSize.Value;
+                    text += BeautyPercenT.ToString("F3") + ";\t" + numChildrenNumber.Value + ";\t" + numPopulationSurvival.Value + ";\t" + numPopulationBonusSurvival.Value + ";\t";
+                    text += (winCount / 10.0).ToString("F1") + ";\t";
+                    if (winCount == 0) text += "0;\t";
+                    else text += (winAverageSteps / (double)winCount).ToString("F0") + ";\t";
+                    if (winCount == 1000) text += "0;\t";
+                    else text += (failAverageSteps / (double)(1000 - winCount)).ToString("F0") + ";\t";
                     System.IO.File.AppendAllText("results.txt", text + "\r\n");
 
 
